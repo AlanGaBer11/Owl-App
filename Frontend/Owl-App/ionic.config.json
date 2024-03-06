@@ -1,0 +1,7 @@
+{
+  "name": "Owl-App",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
