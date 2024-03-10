@@ -7,5 +7,5 @@
 - npm i body-parser
 - nmp i dotenv -save
 
-##FRONTEND
--ionic serve
+## FRONTEND
+- ionic serve
