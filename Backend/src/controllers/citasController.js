@@ -1,28 +1,28 @@
 const citasProceso = require('../processes/citasProceso'); 
 
-const getAllCitas = async() => {
+const getAllCitas = async(res, req) => {
     const citas = await citasProceso.getAllCitas(); 
-    return citas; 
+    res.send(citas); 
 }
 
-const getOneCitas = async(citasId) => {
-    const citas = await citasProceso.getOneCitas(citasId); 
-    return citas; 
+const getOneCitas = async(res, req) => {
+    const citas = await citasProceso.getOneCitas(req.params.citasId); 
+    res.send(citas); 
 }
 
-const createNewCitas = async(citasId, descripcion, fecha, hora, id_usuario, nom_paciente, nom_profesional, nom_clinica) => {
-    const citas = await citasProceso.createNewCitas(citasId, descripcion, fecha, hora, id_usuario, nom_paciente, nom_profesional, nom_clinica); 
-    return citas; 
+const createNewCitas = async(res, req) => {
+    const citas = await citasProceso.createNewCitas(req.body.descripcion, req.body.fecha, req.body.hora, req.params.id_usuario, req.body.nom_paciente, req.body.nom_profesional, req.body.nom_clinica); 
+    res.send(citas); 
 }
 
-const updateOneCitas = async(citasId, descripcion, fecha, hora, id_usuario, nom_paciente, nom_profesional, nom_clinica) => {
-    const citas = await citasProceso.updateOneCitas(citasId, descripcion, fecha, hora, id_usuario, nom_paciente, nom_profesional, nom_clinica); 
-    return citas; 
+const updateOneCitas = async(res, req) => {
+    const citas = await citasProceso.updateOneCitas(req.body.descripcion, req.body.fecha, req.body.hora, req.params.id_usuario, req.body.nom_paciente, req.body.nom_profesional, req.body.nom_clinica); 
+    res.send(citas); 
 }
 
-const deleteOneCitas = async(citasId) => {
-    const citas = await citasProceso.deleteOneCitas(citasId); 
-    return citas; 
+const deleteOneCitas = async(res, req) => {
+    const citas = await citasProceso.deleteOneCitas(req.params.citasId); 
+    res.send(citas); 
 }
 
 module.exports = {
