@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
 connection.connect(error =>{
     if(error)
         throw error;
-    console.log("SI JALO JAJAJAJJA");
+    console.log("¡Conexión exitosa con tabla usuarios!");
 });
 
 // GETALL

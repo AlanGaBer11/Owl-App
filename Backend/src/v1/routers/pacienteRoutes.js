@@ -3,9 +3,9 @@ const router = express.Router();
 const pacienteController = require("../../controllers/pacienteController")
 
 router
-    .get('/', pacienteController.getAllPaciente)
+    .get('/', pacienteController.getAllPacientes)
     .get("/:pacienteId", pacienteController.getOnePaciente)
-    .post("/:pacienteId", pacienteController.createNewPaciente)
+    .post("/", pacienteController.createNewPaciente)
     .patch("/:pacienteId", pacienteController.updateOnePaciente)
     .delete("/:pacienteId", pacienteController.deleteOnePaciente)
     

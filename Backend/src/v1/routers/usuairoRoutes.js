@@ -1,12 +1,12 @@
 const express = require ('express');
 const router = express.Router();
-const usuarioController = require("../../controllers/usuarioController")
+const usuarioController = require("../../controllers/usuarioController");
 
 router
     .get('/', usuarioController.getAllUsuarios)
-    .get("/:pacienteId", usuarioController.getOneUsuario)
-    .post("/:pacienteId", usuarioController.createNewUsuario)
-    .patch("/:pacienteId", usuarioController.updateOneUsuario)
-    .delete("/:pacienteId", usuarioController.deleteOneUsuario)
+    .get("/:usuarioId", usuarioController.getOneUsuario)
+    .post("/", usuarioController.createNewUsuario)
+    .patch("/:usuarioId", usuarioController.updateOneUsuario)
+    .delete("/:usuarioId", usuarioController.deleteOneUsuario)
     
 module.exports = router;
