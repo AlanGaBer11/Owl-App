@@ -19,10 +19,25 @@
   <div class="ion-page" id="main-content">
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-        <ion-title>Home | Owl</ion-title>
+        <div class="content">          
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Home | Owl</ion-title>
+          <!-- Prueba para uso de variables de sesion -->
+          <div *ngIf="userData">
+            <div class="imagen-nombre-container">
+              <div class="nombre-usuario">{{ userData.displayName }}</div>
+              <div class="imagen-container">
+                <img [src]="userData.photoURL" alt="Profile Picture" style="border-radius: 50%; border: 2px solid #000;">
+              </div>
+            </div>
+          </div> 
+          <div *ngIf="!userData">
+            <ion-button routerLink="/login"> Login </ion-button> 
+          </div>               
+        </div>
+        <!-- Prueba para uso de variables de sesion -->
       </ion-toolbar>
     </ion-header>
 

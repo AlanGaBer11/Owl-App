@@ -15,3 +15,31 @@ ion-toolbar.slide{
 ion-toolbar{
     --background:#343A40;
 }
+
+.content{
+    display: flex;
+}
+
+.center{        
+    display: flex;
+    margin-left: 30%;
+}
+
+.imagen-nombre-container {
+    display: flex;
+    justify-content: flex-end; /* Alinea los elementos al extremo derecho */
+    align-items: center; /* Centra verticalmente los elementos */
+  }
+  
+  .imagen-nombre-container .nombre-usuario {
+    margin-right: 10px; /* Espacio entre el nombre y la imagen */
+  }
+  
+  .imagen-container {
+    width: 50px;
+    height: 50px;
+  }
+
+  .button-ion{
+    color:white; 
+  }
