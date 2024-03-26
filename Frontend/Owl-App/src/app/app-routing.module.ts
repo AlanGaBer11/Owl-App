@@ -28,6 +28,30 @@ const routes: Routes = [
     path: 'error',
     loadChildren: () => import('./pages/basic/error/error.module').then( m => m.ErrorPageModule)
   },
+  {
+    path: 'art1',
+    loadChildren: () => import('./pages/articulos/art1/art1.module').then( m => m.Art1PageModule)
+  },
+  {
+    path: 'art2',
+    loadChildren: () => import('./pages/articulos/art2/art2.module').then( m => m.Art2PageModule)
+  },
+  {
+    path: 'art3',
+    loadChildren: () => import('./pages/articulos/art3/art3.module').then( m => m.Art3PageModule)
+  },
+  {
+    path: 'art4',
+    loadChildren: () => import('./pages/articulos/art4/art4.module').then( m => m.Art4PageModule)
+  },
+  {
+    path: 'art5',
+    loadChildren: () => import('./pages/articulos/art5/art5.module').then( m => m.Art5PageModule)
+  },
+  {
+    path: 'nosotros',
+    loadChildren: () => import('./pages/articulos/nosotros/nosotros.module').then( m => m.NosotrosPageModule)
+  },
 
 ];
 

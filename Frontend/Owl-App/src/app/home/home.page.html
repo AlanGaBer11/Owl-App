@@ -1,24 +1,25 @@
 <ion-content>
-  <swiper-container class="mySwiper" pagination="true" navigation="true">
+  <swiper-container pagination="true" navigation="true">
     <swiper-slide>
-      <img
-        src="https://static.vecteezy.com/system/resources/previews/023/630/408/non_2x/web-button-icon-next-button-free-png.png"
-        width="500px" height="400px">
+      <img src="/assets/img/Anny_pet_0.2.png" width="500px" height="400px">
     </swiper-slide>
     <swiper-slide>
-      <img
-        src="https://static.vecteezy.com/system/resources/previews/023/630/408/non_2x/web-button-icon-next-button-free-png.png"
-        width="500px" height="400px">
+      <img src="/assets/img/oficina2.jpeg" width="500px" height="400px">
     </swiper-slide>
     <swiper-slide>
-      <img src="https://i.ytimg.com/vi/N7XXb-lcvVY/hqdefault.jpg" width="500px" height="400px">
+      <img src="/assets/img/logo3.png" width="500px" height="400px">
     </swiper-slide>
   </swiper-container>
-</ion-content>
 
-
-<ion-content>
-  <div class="articulos">
-
+  <!-- Articulos -->
+  <div class="cont">
+    <ion-card *ngFor="let a of articulos">
+      <img [src]="a.img" alt="Imagen" class="b">
+      <ion-card-content>
+        <p class="ti">{{ a.titulo }}</p>
+        <ion-button class="btn-leer-mas" [routerLink]="a.url">Leer más...</ion-button>
+      </ion-card-content>
+    </ion-card>
   </div>
-</ion-content> 
+  <!-- Fin Articulos -->
+</ion-content>

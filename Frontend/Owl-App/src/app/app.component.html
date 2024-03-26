@@ -2,10 +2,11 @@
   <ion-menu contentId="main-content">
     <ion-header>
       <ion-toolbar class="slide">
-        <ion-title>Menú</ion-title>
+        <ion-title style="text-align: center;">Menú</ion-title>
       </ion-toolbar>
     </ion-header>
 
+    <!-- INICIO SLIDE MENU -->
     <ion-content>
       <ion-menu-toggle auto-hide="false" *ngFor="let p of Pages; let i = index">
         <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
@@ -14,36 +15,43 @@
         </ion-item>
       </ion-menu-toggle>
     </ion-content>
-  </ion-menu>  
+    <ion-item> Modo Oscuro
+      <ion-toggle slot="end" [checked]="darkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
+    </ion-item>
+  </ion-menu>
+  <!-- FIN SLIDE MENU -->
 
+  <!-- LAYOUT -->
   <div class="ion-page" id="main-content">
     <ion-header>
-      <ion-toolbar>
-        <div class="content">          
-          <ion-buttons slot="start">
+      <ion-toolbar class="main">
+        <div class="content">
+          <ion-buttons slot="start" style="color: #fff;">
             <ion-menu-button></ion-menu-button>
           </ion-buttons>
           <ion-title>Home | Owl</ion-title>
           <!-- Prueba para uso de variables de sesion -->
           <div *ngIf="userData">
             <div class="imagen-nombre-container">
-              <div class="nombre-usuario">{{ userData.displayName }}</div>
+              <div class="nombre-usuario" style="color: #fff">{{ userData.displayName }}</div>
               <div class="imagen-container">
-                <img [src]="userData.photoURL" alt="Profile Picture" style="border-radius: 50%; border: 2px solid #000;">
+                <img [src]="userData.photoURL" alt="Profile Picture"
+                  style="border-radius: 50%; border: 2px solid #000;">
               </div>
             </div>
-          </div> 
+          </div>
           <div *ngIf="!userData">
-            <ion-button routerLink="/login"> Login </ion-button> 
-          </div>               
+            <ion-button routerLink="/login"> Login </ion-button>
+          </div>
         </div>
         <!-- Prueba para uso de variables de sesion -->
       </ion-toolbar>
     </ion-header>
 
-    <!-- MOSTRAR PÁGINAS -->
+    <ion-content>
+      <!-- MOSTRAR PÁGINAS -->
       <ion-router-outlet></ion-router-outlet>
-    
+    </ion-content>
+
   </div>
 </ion-app>
-

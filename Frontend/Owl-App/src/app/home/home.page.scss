@@ -1,13 +1,43 @@
-swiper-container {
-  width: 90%;
-  height: 100%;
+swiper-container{
+  margin-top: 100px;
+}
+ion-card {
+  max-width: 199px;
+  margin: 10px;
 }
 
-swiper-slide {
+ion-card img {
+  max-width: 100%;
+  height: 190px;
+}
+
+ion-card-content {
   text-align: center;
-  font-size: 18px;
-  background: #000;
+}
+
+.boton-leer-mas {
+  margin-top: 10px;
+}
+
+.cont {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+}
+
+.rectangulo {
+  border: 2px solid #CCC;
+  padding: 20px;
+  margin: 20px;
+  max-width: 400px;
+}
+
+.b {
+  border: 1px solid black;
+  display: block;
+  margin: 0 auto;
+}
+
+.ti {
+  color: auto;
 }
