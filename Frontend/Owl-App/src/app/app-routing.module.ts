@@ -16,7 +16,8 @@ const routes: Routes = [
   {
     path: 'ver-paciente',
     loadChildren: () => import('./pages/paciente/ver-paciente/ver-paciente.module').then( m => m.VerPacientePageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./pages/basic/login/login.module').then( m => m.LoginPageModule)
   },
@@ -51,6 +52,50 @@ const routes: Routes = [
   {
     path: 'nosotros',
     loadChildren: () => import('./pages/articulos/nosotros/nosotros.module').then( m => m.NosotrosPageModule)
+  },
+  {
+    path: 'nuevo-paciente',
+    loadChildren: () => import('./pages/paciente/nuevo-paciente/nuevo-paciente.module').then( m => m.NuevoPacientePageModule)
+  },
+  {
+    path: 'edi-paciente',
+    loadChildren: () => import('./pages/paciente/edi-paciente/edi-paciente.module').then( m => m.EdiPacientePageModule)
+  },
+  {
+    path: 'ver-clinica',
+    loadChildren: () => import('./pages/clinicas/ver-clinica/ver-clinica.module').then( m => m.VerClinicaPageModule)
+  },
+  {
+    path: 'nueva-clinica',
+    loadChildren: () => import('./pages/clinicas/nueva-clinica/nueva-clinica.module').then( m => m.NuevaClinicaPageModule)
+  },
+  {
+    path: 'edi-clinica',
+    loadChildren: () => import('./pages/clinicas/edi-clinica/edi-clinica.module').then( m => m.EdiClinicaPageModule)
+  },
+  {
+    path: 'card-clinica',
+    loadChildren: () => import('./pages/clinicas/card-clinica/card-clinica.module').then( m => m.CardClinicaPageModule)
+  },
+  {
+    path: 'ver-prof',
+    loadChildren: () => import('./pages/profesionales/ver-prof/ver-prof.module').then( m => m.VerProfPageModule)
+  },
+  {
+    path: 'nuevo-prof',
+    loadChildren: () => import('./pages/profesionales/nuevo-prof/nuevo-prof.module').then( m => m.NuevoProfPageModule)
+  },
+  {
+    path: 'edi-prof',
+    loadChildren: () => import('./pages/profesionales/edi-prof/edi-prof.module').then( m => m.EdiProfPageModule)
+  },
+  {
+    path: 'ver-cita',
+    loadChildren: () => import('./pages/citas/ver-cita/ver-cita.module').then( m => m.VerCitaPageModule)
+  },
+  {
+    path: 'nueva-cita',
+    loadChildren: () => import('./pages/citas/nueva-cita/nueva-cita.module').then( m => m.NuevaCitaPageModule)
   },
 
 ];

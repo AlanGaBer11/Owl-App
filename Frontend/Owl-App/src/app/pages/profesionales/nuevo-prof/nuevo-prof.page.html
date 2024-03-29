@@ -1,0 +1,69 @@
+<ion-content>
+  <div id="container">
+    <h1>Agregar Profesional</h1>
+    <ion-button routerLink="/ver-prof">Cancelar</ion-button>
+
+    <form action="/nuevo_profesional" method="POST">
+      <div class="form-group">
+        <div class="center-form">
+          <div class="form-container col-4">
+            <label for="nom">Nombre(s):</label>
+            <ion-input type="text" id="nom" name="nom" placeholder="Nombre(s)" required></ion-input>
+          </div>
+          <div class="form-container col-4">
+            <label for="ap">Apellido(s):</label>
+            <ion-input type="text" id="ap" name="ap" placeholder="Apellido(s)" required></ion-input>
+          </div>
+          <div class="form-container col-4">
+            <label for="especialidad">Especialidad:</label>
+            <ion-input type="text" id="especialidad" name="especialidad" placeholder="Especialidad"
+              required></ion-input>
+          </div>
+        </div>
+
+        <div class="center-form">
+          <div class="form-container">
+            <label for="num_telefono">Número de teléfono:</label>
+            <ion-input type="text" id="num_telefono" name="num_telefono" placeholder="(499) xxx xxxx"
+              required></ion-input>
+          </div>
+
+          <div class="form-container">
+            <label for="correo">Correo electrónico:</label>
+            <ion-input type="email" id="correo" name="correo" placeholder="correo@gmail.com" required></ion-input>
+          </div>
+
+          <div class="form-container">
+            <label for="horario">Horario:</label>
+            <ion-select id="horario" name="horario" placeholder="Seleccione Horario" required>
+              <ion-select-option value="Mañana">Mañana</ion-select-option>
+              <ion-select-option value="Tarde">Tarde</ion-select-option>
+              <ion-select-option value="Noche">Noche</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+        <div class="center-form">
+          <div class="form-container col-6">
+            <label for="cedula_profesional">Cedula profesional:</label>
+            <ion-input type="text" id="cedula_profesional" name="cedula_profesional" placeholder="0000000"
+              required></ion-input>
+          </div>
+
+          <div class="form-container col-6">
+            <label for="clinica">Clínica:</label>
+            <ion-select id="clinica" name="clinica" placeholder="Seleccione Clínica" required>
+              <ion-select-option value="Clínica A">Clínica A</ion-select-option>
+              <ion-select-option value="Clínica B">Clínica B</ion-select-option>
+              <ion-select-option value="Clínica C">Clínica C</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+        <div class="center-form">
+          <ion-button type="submit">Enviar</ion-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-content>
+  <div id="container">
+    <h1>Editar Clínica</h1>
+    <ion-button routerLink="/ver-clinica">Cancelar</ion-button>
+    <form action="/nueva_clinica" method="POST">
+      <div class="form-group">
+
+        <div class="center-form">
+          <div class="form-container col-6">
+            <label for="nom_cliente">Nombre de la institución:</label>
+            <ion-input type="text" id="nom_cliente" name="nom_cliente" placeholder="Nombres" required></ion-input>
+          </div>
+          <div class="form-container col-6">
+            <label for="ap_pa">Descripción:</label>
+            <ion-input type="text" id="ap_pa" name="ap_pa" placeholder="Apellido Paterno" required></ion-input>
+          </div>
+        </div>
+
+        <div class="center-form">
+          <div class="form-container col-6">
+            <label for="direccion">Dirección:</label>
+            <ion-input type="text" id="direccion" class="form-control" name="direccion" placeholder="Dirección" required></ion-input>
+          </div>
+          <div class="form-container col-6">
+            <label for="num_telefono">Número de teléfono:</label>
+            <ion-input type="text" id="num_telefono" class="form-control" name="num_telefono" placeholder="(499) xxx xxxx" required></ion-input>
+          </div>
+        </div>
+
+        <div class="center-form">
+          <ion-button type="submit">Enviar</ion-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

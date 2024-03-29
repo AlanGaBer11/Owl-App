@@ -1,0 +1,103 @@
+<ion-content>
+  <div id="container">
+    <h1>Editar Pacientes</h1>
+    <ion-button routerLink="/ver-paciente">Cancelar</ion-button>
+
+    <form action="/nuevo_paciente" method="POST">
+      <div class="form-group">
+        <div class="center-form">
+          <div class="form-container col-4">
+            <label for="nom_cliente">Nombre(s):</label>
+            <ion-input type="text" id="nom_cliente" name="nom_cliente" placeholder="Nombres" required></ion-input>
+          </div>
+          <div class="form-container col-4">
+            <label for="ap_pa">Apellido paterno:</label>
+            <ion-input type="text" id="ap_pa" name="ap_pa" placeholder="Apellido Paterno" required></ion-input>
+          </div>
+          <div class="form-container col-4">
+            <label for="ap_ma">Apellido materno:</label>
+            <ion-input type="text" id="ap_ma" name="ap_ma" placeholder="Apellido Materno" required></ion-input>
+          </div>
+        </div>
+
+        <div class="center-form">
+          <div class="form-container">
+            <label for="fecha_nacimiento">Fecha Nacimiento:</label>
+            <ion-input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required></ion-input>
+          </div>
+
+          <div class="form-container">
+            <label for="genero">Género:</label>
+            <ion-select id="genero" name="genero" placeholder="Seleccione Género" required>
+              <ion-select-option value="Masculino">Masculino</ion-select-option>
+              <ion-select-option value="Femenino">Femenino</ion-select-option>
+              <ion-select-option value="Otro">Otro</ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="form-container">
+            <label for="civil">Estado civil:</label>
+            <ion-select id="civil" name="civil" placeholder="Seleccione Estado Civil" required>
+              <ion-select-option value="soltero">Soltero</ion-select-option>
+              <ion-select-option value="casado">Casado</ion-select-option>
+              <ion-select-option value="divorciado">Divorciado</ion-select-option>
+              <ion-select-option value="viudo">Viudo</ion-select-option>
+            </ion-select>
+          </div>
+        </div>
+
+        <div class="center-form">
+          <div>
+            <ion-label>Contacto:</ion-label>
+            <ion-input type="text" id="contacto" name="contacto" placeholder="Número de teléfono" required></ion-input>
+          </div>
+
+          <div>
+            <div class="radio">
+              <div class="form-container">
+                <ion-label>¿Está registrado en Owl?</ion-label>
+                <ion-radio-group name="regis_on">
+                  <ion-item>
+                    <ion-label>Sí</ion-label>
+                    <ion-radio slot="start" value="Si"></ion-radio>
+                  </ion-item>
+                  <ion-item>
+                    <ion-label>No</ion-label>
+                    <ion-radio slot="start" value="No"></ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="form-container">
+              <ion-label>¿Cuenta con antecedentes médicos?</ion-label>
+              <ion-radio-group name="antecedentes">
+                <ion-item>
+                  <ion-label>Sí</ion-label>
+                  <ion-radio slot="start" value="Si"></ion-radio>
+                </ion-item>
+                <ion-item>
+                  <ion-label>No</ion-label>
+                  <ion-radio slot="start" value="No"></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-container">
+            <label for="medicamentos">Medicamentos</label>
+            <ion-input type="text" id="medicamentos" name="medicamentos" placeholder="Medicamentos"
+              required></ion-input>
+          </div>
+        </div>
+
+        <div class="center-form">
+          <ion-button type="submit">Enviar</ion-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

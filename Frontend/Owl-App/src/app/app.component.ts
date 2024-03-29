@@ -14,15 +14,6 @@ import { UserService } from './services/user.service';
 
 export class AppComponent implements OnInit {
   userData: any; 
- // URL DE PAGINAS
-  public Pages = [
-    { title: 'Home', url: '/home', icon: 'home' },
-    { title: 'Login', url: '/login', icon: 'log-in' },
-    { title: 'Pacientes', url: '/ver-paciente', icon: 'people' },
-    { title: '¿Quién somos', url: '/', icon: 'heart' },
-    { title: 'Procesos', url: '/', icon: 'settings' }
-  ];
-
   darkMode: boolean = false;
   constructor(private userService: UserService) {}
   

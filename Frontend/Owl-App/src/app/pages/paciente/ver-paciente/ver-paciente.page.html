@@ -1,5 +1,32 @@
 <ion-content>
   <div id="container">
-    <strong>Página Paciente</strong>
+    <h1>Pacientes Registrados</h1>
+    <ion-button routerLink="/nuevo-paciente">Agregar a un Paciente</ion-button>
+    <br>
+
+    <!-- TABLA -->
+    <div class="tabla-container">
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre del Paciente</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of pacientes">
+            <td></td>
+            <td>{{p.id_paciente}}</td>
+            <td>{{ p.nombre }}</td>
+            <td>
+              <ion-button color="medium" routerLink="/edi-paciente/{{ p.id }}">Editar</ion-button>
+              <ion-button color="danger" (click)="eliminarPaciente(p.id)">Eliminar</ion-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </ion-content>

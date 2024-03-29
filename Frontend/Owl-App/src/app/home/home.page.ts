@@ -11,7 +11,7 @@ export class HomePage {
     { img: '/assets/img/depresion.jpg', titulo: 'Depresión', url: '/art2'},
     { img: '/assets/img/ansiedad.jpg', titulo: 'Ansiedad', url: '/art3'},
     { img: '/assets/img/estres.jpg', titulo: 'Estrés', url: '/art4'},
-    { img: '/assets/img/suicidio.jpg', titulo: 'Suicidio', url: '/art5'},
+    { img: '/assets/img/suicidio.jpg', titulo: 'Suicidio', url:'/art5'},
   ];
 
   constructor() {}

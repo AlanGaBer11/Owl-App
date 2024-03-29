@@ -22,21 +22,43 @@ ion-toolbar.main{
 
 ion-title{
   color:#fff;
+  width: 100%;
+  margin: 0 auto;
+}
+
+ion-buttons[slot="start"] {
+  margin-left: 10px; // Ajustar el margen izquierdo según sea necesario
+}
+
+ion-accordion-group {
+  ion-item {
+    ion-label {
+      ion-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  ion-accordion {
+    div.ion-padding {
+      padding-left: 40px;
+    }
+  }
 }
 
 .content{
     display: flex;
 }
 
-
 .imagen-nombre-container {
     display: flex;
     justify-content: flex-end; /* Alinea los elementos al extremo derecho */
     align-items: center; /* Centra verticalmente los elementos */
+
   }
   
   .imagen-nombre-container .nombre-usuario {
-    margin-right: 10px; /* Espacio entre el nombre y la imagen */
+    margin-right: 15px; /* Espacio entre el nombre y la imagen */
   }
   
   .imagen-container {
