@@ -1,3 +1,4 @@
+// Estilos generales
 ion-menu::part(backdrop) {
   background-color: #007bff;
 }
@@ -5,23 +6,37 @@ ion-menu::part(backdrop) {
 ion-menu::part(container) {
   border-radius: 0 20px 20px 0;
 }
-ion-toolbar.slide{
+
+ion-toolbar.slide {
   text-align: center;
   --background: #007bff;
 }
 
-ion-toolbar.main{
-  --background:#343A40;
+ion-toolbar.main {
+  --background: #343a40;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-right: 10px;
-  font-size:10px;
+  font-size: 10px;
   line-height: inherit;
   white-space: nowrap;
+
+  // Estilos responsive para diferentes tamaños de pantalla
+  @media screen and (max-width: 576px) {
+    font-size: 8px; // Reducir el tamaño de fuente para pantallas pequeñas
+  }
+
+  @media screen and (min-width: 577px) and (max-width: 768px) {
+    font-size: 12px; // Ajustar el tamaño de fuente para pantallas medianas
+  }
+
+  @media screen and (min-width: 769px) {
+    font-size: 14px; // Ajustar el tamaño de fuente para pantallas grandes
+  }
 }
 
-ion-title{
-  color:#fff;
+ion-title {
+  color: #fff;
   width: 100%;
   margin: 0 auto;
 }
@@ -46,26 +61,36 @@ ion-accordion-group {
   }
 }
 
-.content{
-    display: flex;
+.content {
+  display: flex;
 }
 
 .imagen-nombre-container {
-    display: flex;
-    justify-content: flex-end; /* Alinea los elementos al extremo derecho */
-    align-items: center; /* Centra verticalmente los elementos */
+  display: flex;
+  justify-content: flex-end; /* Alinea los elementos al extremo derecho */
+  align-items: center; /* Centra verticalmente los elementos */
 
-  }
-  
-  .imagen-nombre-container .nombre-usuario {
+  .nombre-usuario {
     margin-right: 15px; /* Espacio entre el nombre y la imagen */
   }
-  
+
   .imagen-container {
     width: 50px;
     height: 50px;
-  }
 
-  .button-ion{
-    color:white; 
+    // Estilos responsive para el tamaño de la imagen
+    @media screen and (max-width: 576px) {
+      width: 40px; // Reducir el tamaño de la imagen para pantallas pequeñas
+      height: 40px;
+    }
+
+    @media screen and (min-width: 769px) {
+      width: 60px; // Aumentar el tamaño de la imagen para pantallas grandes
+      height: 60px;
+    }
   }
+}
+
+.button-ion {
+  color: white;
+}

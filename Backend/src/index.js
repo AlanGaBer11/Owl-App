@@ -3,6 +3,8 @@ const express = require('express');
 const req = require('express/lib/request');
 const bodyParser = require('body-parser');
 
+const cors = require('cors');
+
 // RUTAS
 const v1usuarioRouter = require("./v1/routers/usuairoRoutes");
 const v1pacienteRouter = require("./v1/routers/pacienteRoutes");
@@ -15,6 +17,7 @@ const v1contactoRouter = require("./v1/routers/contactoRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use("/api/v1/usuario", v1usuarioRouter);

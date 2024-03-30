@@ -1,108 +1,117 @@
-#container {
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 45%;
-    transform: translateY(-50%);
+ion-content {
+  --ion-background-color: auto;
+
+  #container {
+    padding: 20px;
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .center {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      height: 350px;
+      margin: 20px;
+
+      .face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: 0.5s;
+      }
+
+      .front {
+        transform: perspective(600px) rotateY(0deg);
+        box-shadow: 0 5px 10px #000;
+
+        img {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        h3 {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 45px;
+          line-height: 45px;
+          color: #fff;
+          background: rgba(0, 0, 0, 0.4);
+          text-align: center;
+        }
+      }
+
+      .back {
+        transform: perspective(600px) rotateY(180deg);
+        background: rgb(3, 35, 54);
+        padding: 15px;
+        color: #f3f3f3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        box-shadow: 0 5px 10px #000;
+
+        .link {
+          border-top: solid 1px #f3f3f3;
+          height: 50px;
+          line-height: 50px;
+
+          a {
+            color: #f3f3f3;
+          }
+        }
+
+        h3 {
+          font-size: 30px;
+          margin-top: 20px;
+          letter-spacing: 2px;
+        }
+
+        p {
+          letter-spacing: 1px;
+        }
+      }
+
+      &:hover {
+        .front {
+          transform: perspective(600px) rotateY(180deg);
+        }
+
+        .back {
+          transform: perspective(600px) rotateY(360deg);
+        }
+      }
+    }
   }
-  
-  #container h1 {
-    text-align: center;
-    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  ion-content {
+    #container {
+      .card {
+        width: 100%;
+        max-width: none;
+        margin: 10px;
+      }
+    }
   }
-  
-  .center {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    min-height: auto;
-    margin: 20px auto;
-    padding: 30px 10px 10px;
-  }
-  
-  .card {
-    position: relative;
-    width: 300px;
-    height: 350px;
-    margin: 20px;
-  }
-  
-  .card .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: 0.5s;
-  }
-  
-  .card .front {
-    transform: perspective(600px) rotateY(0deg);
-    box-shadow: 0 5px 10px #000;
-  }
-  
-  .card .front img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* Añade estas propiedades para centrar la imagen */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  .card .front h3 {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 45px;
-    line-height: 45px;
-    color: #fff;
-    background: rgba(0, 0, 0, 0.4);
-    text-align: center;
-  }
-  
-  .card .back {
-    transform: perspective(600px) rotateY(180deg);
-    background: rgb(3, 35, 54);
-    padding: 15px;
-    color: #f3f3f3;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    box-shadow: 0 5px 10px #000;
-  }
-  
-  .card .back .link {
-    border-top: solid 1px #f3f3f3;
-    height: 50px;
-    line-height: 50px;
-  }
-  
-  .card .back .link a {
-    color: #f3f3f3;
-  }
-  
-  .card .back h3 {
-    font-size: 30px;
-    margin-top: 20px;
-    letter-spacing: 2px;
-  }
-  
-  .card .back p {
-    letter-spacing: 1px;
-  }
-  
-  .card:hover .front {
-    transform: perspective(600px) rotateY(180deg);
-  }
-  
-  .card:hover .back {
-    transform: perspective(600px) rotateY(360deg);
-  }
-  
+}

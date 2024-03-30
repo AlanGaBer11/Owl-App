@@ -17,4 +17,15 @@ export class ServicioRestService {
     public delete (url:string){
       return this.http.delete(url);
     }
+
+    //POST
+    public post (url: string, data: any){
+      return this.http.post(url, data);
+    }
+
+    //PATCH
+    public patch(url: string, data: any, options?: any){
+      const elemento = `'${url}`;
+      return this.http.patch(elemento, data, options);
+    }
 }

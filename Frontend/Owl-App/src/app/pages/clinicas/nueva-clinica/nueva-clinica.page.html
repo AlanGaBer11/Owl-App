@@ -1,36 +1,53 @@
 <ion-content>
-  <div id="container">
-    <h1>Agregar Clínica</h1>
-    <ion-button routerLink="/ver-clinica">Cancelar</ion-button>
-    <form action="/nueva_clinica" method="POST">
-      <div class="form-group">
-
-        <div class="center-form">
-          <div class="form-container col-6">
-            <label for="nom_cliente">Nombre de la institución:</label>
-            <ion-input type="text" id="nom_cliente" name="nom_cliente" placeholder="Nombres" required></ion-input>
-          </div>
-          <div class="form-container col-6">
-            <label for="ap_pa">Descripción:</label>
-            <ion-input type="text" id="ap_pa" name="ap_pa" placeholder="Apellido Paterno" required></ion-input>
-          </div>
-        </div>
-
-        <div class="center-form">
-          <div class="form-container col-6">
-            <label for="direccion">Dirección:</label>
-            <ion-input type="text" id="direccion" class="form-control" name="direccion" placeholder="Dirección" required></ion-input>
-          </div>
-          <div class="form-container col-6">
-            <label for="num_telefono">Número de teléfono:</label>
-            <ion-input type="text" id="num_telefono" class="form-control" name="num_telefono" placeholder="(499) xxx xxxx" required></ion-input>
-          </div>
-        </div>
-
-        <div class="center-form">
-          <ion-button type="submit">Enviar</ion-button>
-        </div>
-      </div>
+  <ion-grid id="container">
+    <ion-row>
+      <ion-col size="12" class="ion-text-center ion-margin-bottom">
+        <h1>Agregar Clínica</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center ion-margin-bottom">
+        <ion-button routerLink="/ver-clinica">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="agClinica" (ngSubmit)="agregarClinica()">
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Nombre de la institución:</ion-label>
+            <ion-input type="text" formControlName="nombre" placeholder="Nombre" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Descripción:</ion-label>
+            <ion-input type="text" formControlName="descripcion" placeholder="Descripción" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Dirección:</ion-label>
+            <ion-input type="text" formControlName="direccion" placeholder="Dirección" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Número de teléfono:</ion-label>
+            <ion-input type="text" formControlName="num_tel" placeholder="(499) xxx xxxx" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button type="submit" expand="block">Enviar</ion-button>
+        </ion-col>
+      </ion-row>
     </form>
-  </div>
+  </ion-grid>
 </ion-content>

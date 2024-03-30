@@ -1,103 +1,111 @@
 <ion-content>
-  <div id="container">
-    <h1>Agregar Pacientes</h1>
-    <ion-button routerLink="/ver-paciente">Cancelar</ion-button>
+  <ion-grid id="container">
+    <ion-row>
+      <ion-col size="12" class="ion-text-center ion-margin-bottom">
+        <h1>Agregar Pacientes</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center ion-margin-bottom">
+        <ion-button routerLink="/ver-paciente">Cancelar</ion-button>
+      </ion-col>
+    </ion-row>
+    <form [formGroup]="agPacientes">
+      <ion-row>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Nombre(s):</ion-label>
+            <ion-input type="text" id="nom_cliente" name="nombre_cliente" required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Apellido paterno:</ion-label>
+            <ion-input type="text" id="ap_pa" name="ap_pa" required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Apellido materno:</ion-label>
+            <ion-input type="text" id="ap_ma" name="ap_ma" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-    <form action="/nuevo_paciente" method="POST">
-      <div class="form-group">
-        <div class="center-form">
-          <div class="form-container col-4">
-            <label for="nom_cliente">Nombre(s):</label>
-            <ion-input type="text" id="nom_cliente" name="nom_cliente" placeholder="Nombres" required></ion-input>
-          </div>
-          <div class="form-container col-4">
-            <label for="ap_pa">Apellido paterno:</label>
-            <ion-input type="text" id="ap_pa" name="ap_pa" placeholder="Apellido Paterno" required></ion-input>
-          </div>
-          <div class="form-container col-4">
-            <label for="ap_ma">Apellido materno:</label>
-            <ion-input type="text" id="ap_ma" name="ap_ma" placeholder="Apellido Materno" required></ion-input>
-          </div>
-        </div>
-
-        <div class="center-form">
-          <div class="form-container">
-            <label for="fecha_nacimiento">Fecha Nacimiento:</label>
+      <ion-row>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Fecha Nacimiento:</ion-label>
             <ion-input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required></ion-input>
-          </div>
-
-          <div class="form-container">
-            <label for="genero">Género:</label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Género:</ion-label>
             <ion-select id="genero" name="genero" placeholder="Seleccione Género" required>
               <ion-select-option value="Masculino">Masculino</ion-select-option>
               <ion-select-option value="Femenino">Femenino</ion-select-option>
               <ion-select-option value="Otro">Otro</ion-select-option>
             </ion-select>
-          </div>
-
-          <div class="form-container">
-            <label for="civil">Estado civil:</label>
-            <ion-select id="civil" name="civil" placeholder="Seleccione Estado Civil" required>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="4">
+          <ion-item>
+            <ion-label position="floating">Estado civil:</ion-label>
+            <ion-select id="civil" name="estado_civil" placeholder="Seleccione Estado Civil" required>
               <ion-select-option value="soltero">Soltero</ion-select-option>
               <ion-select-option value="casado">Casado</ion-select-option>
               <ion-select-option value="divorciado">Divorciado</ion-select-option>
               <ion-select-option value="viudo">Viudo</ion-select-option>
             </ion-select>
-          </div>
-        </div>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-        <div class="center-form">
-          <div>
-            <ion-label>Contacto:</ion-label>
-            <ion-input type="text" id="contacto" name="contacto" placeholder="Número de teléfono" required></ion-input>
-          </div>
+      <ion-row>
+        <ion-col size="12" size-md="6">
+          <ion-item>
+            <ion-label position="floating">Contacto:</ion-label>
+            <ion-input type="text" id="contacto" name="contacto" required></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md="6">
+          <ion-item>
+            <ion-label>¿Está registrado en Owl?</ion-label>
+            <ion-radio-group name="registro_online">
+              <ion-radio value="Si">Sí</ion-radio>
+              <ion-radio value="No">No</ion-radio>
+            </ion-radio-group>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-          <div>
-            <div class="radio">
-              <div class="form-container">
-                <ion-label>¿Está registrado en Owl?</ion-label>
-                <ion-radio-group name="regis_on">
-                  <ion-item>
-                    <ion-label>Sí</ion-label>
-                    <ion-radio slot="start" value="Si"></ion-radio>
-                  </ion-item>
-                  <ion-item>
-                    <ion-label>No</ion-label>
-                    <ion-radio slot="start" value="No"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="form-container">
-              <ion-label>¿Cuenta con antecedentes médicos?</ion-label>
-              <ion-radio-group name="antecedentes">
-                <ion-item>
-                  <ion-label>Sí</ion-label>
-                  <ion-radio slot="start" value="Si"></ion-radio>
-                </ion-item>
-                <ion-item>
-                  <ion-label>No</ion-label>
-                  <ion-radio slot="start" value="No"></ion-radio>
-                </ion-item>
-              </ion-radio-group>
-            </div>
-          </div>
-        </div>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>¿Cuenta con antecedentes médicos?</ion-label>
+            <ion-radio-group name="antecedentes_medicos">
+              <ion-radio value="Si">Sí</ion-radio>
+              <ion-radio value="No">No</ion-radio>
+            </ion-radio-group>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-        <div>
-          <div class="form-container">
-            <label for="medicamentos">Medicamentos</label>
-            <ion-input type="text" id="medicamentos" name="medicamentos" placeholder="Medicamentos"
-              required></ion-input>
-          </div>
-        </div>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Medicamentos</ion-label>
+            <ion-input type="text" id="medicamentos_actuales" name="medicamentos_actuales" required></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
-        <div class="center-form">
-          <ion-button type="submit">Enviar</ion-button>
-        </div>
-      </div>
+      <ion-row>
+        <ion-col size="12">
+          <ion-button type="submit" (click)="agregarPaciente()" expand="block">Enviar</ion-button>
+        </ion-col>
+      </ion-row>
     </form>
-  </div>
+  </ion-grid>
 </ion-content>

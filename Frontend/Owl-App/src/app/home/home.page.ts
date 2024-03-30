@@ -1,11 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
+  swiper: any;
   public articulos = [
     { img: '/assets/img/m.jpg', titulo: 'Salud Mental', url: '/art1'},
     { img: '/assets/img/depresion.jpg', titulo: 'Depresión', url: '/art2'},
@@ -14,6 +15,8 @@ export class HomePage {
     { img: '/assets/img/suicidio.jpg', titulo: 'Suicidio', url:'/art5'},
   ];
 
+  ngOnInit(): void {
+  }
   constructor() {}
 
 }

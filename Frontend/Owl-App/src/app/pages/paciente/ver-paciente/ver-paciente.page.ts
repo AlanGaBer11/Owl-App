@@ -12,31 +12,23 @@ export class VerPacientePage implements OnInit {
   constructor(private serviceRest: ServicioRestService) { }
 
   ngOnInit(): void {
-    this.cargarPacientes();
+    this.getPaciente();
   }
 
-  public cargarPacientes() {
-    const url = 'http://localhost:3000/api/v1/paciente';
-    this.serviceRest.get(url).subscribe(
-      (respuesta: any) => {
-        this.pacientes = respuesta;
-      },
-      (error: any) => {
-        console.error('Error al obtener los pacientes:', error);
-      }
-    );
-  }
+ // GET
+ public getPaciente(){
+  this.serviceRest.get('http://localhost:3000/api/v1/paciente').subscribe(respuesta => {
+    this.pacientes = respuesta;
+  });
+};
 
-  public eliminarPaciente(id: number) {
-    const url = `http://localhost:3000/api/v1/paciente/${id}`;
-    this.serviceRest.delete(url).subscribe(
-      () => {
-        console.log('Paciente eliminado correctamente.');
-        this.cargarPacientes(); // Actualizar la lista después de eliminar
-      },
-      (error: any) => {
-        console.error('Error al eliminar el paciente:', error);
-      }
-    );
-  }
+//DELETE
+public deletePaciente(id: number){
+  this.serviceRest.delete(`http://localhost:3000/api/v1/paciente/${id}`).subscribe((respuesta) => {
+    console.log('Eliminado', respuesta);
+  });
+  alert('Paciente Eliminada');
+  this.getPaciente();
+  window.location.reload();
+}
 }

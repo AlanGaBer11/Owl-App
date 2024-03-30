@@ -1,39 +1,41 @@
+
 <ion-content>
-  <div id="container">
-    <h1>Profesionales Registrados</h1>
-    <ion-button routerLink="/nuevo-prof">Agregar a un Profesional</ion-button>
-    <br>
-
-    <!-- TABLA -->
-    <div class="tabla-container">
-      <table class="content-table">
-        <thead>
-          <tr>
-            <th>Nombre del Profesional</th>
-            <th>Especialidad</th>
-            <th>Clínica</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>
-              prueba
-            </td>
-            <td>p</td>
-            <td>p</td>
-            <td>
-              <ion-button color="medium" routerLink="/edi-prof">Editar</ion-button>
-            </td>
-            <td>
-              <ion-button color="danger">Eliminar</ion-button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
+  <ion-grid id="container">
+    <ion-row>
+      <ion-col size="12" class="ion-text-center">
+        <h1>Profesionales Registrados</h1>
+        <ion-button routerLink="/nuevo-prof">Agregar un Profesional</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div class="tabla-container">
+          <table class="content-table">
+            <thead>
+              <tr>
+                <th>Nombre del Profesional</th>
+                <th>Especialidad</th>
+                <th>Clínica</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of prof">
+                <td>{{p.nom}} {{p.ap}}</td>
+                <td>{{p.especialidad}}</td>
+                <td>{{p.nom_clinica}}</td>
+                <td>
+                  <ion-button color="medium" routerLink="/edi-prof">Editar</ion-button>
+                </td>
+                <td>
+                  <ion-button color="danger" (click)="deleteProf(p.id_pro)">Eliminar</ion-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

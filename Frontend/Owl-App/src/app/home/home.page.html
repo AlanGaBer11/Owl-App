@@ -1,13 +1,30 @@
 <ion-content>
-  <swiper-container pagination="true" navigation="true">
+  <swiper-container [navigation]="true" [pagination]="true"[spaceBetween]="30"[autoplay]="{ delay: 3000 }">
     <swiper-slide>
-      <img src="/assets/img/Anny_pet_0.2.png" width="500px" height="400px">
+      <div class="slide-content">
+        <img src="/assets/img/Anny_pet_0.2.png" alt="Slide 1">
+        <h2>Bienvenido a Owl</h2>
+        <p>Descubra en qué consiste Owl</p>
+      </div>
     </swiper-slide>
+
     <swiper-slide>
-      <img src="/assets/img/oficina2.jpeg" width="500px" height="400px">
+      <div class="slide-content">
+        <img src="/assets/img/oficina2.jpeg" alt="Slide 2">
+        <h2>Introducción a Owl</h2>
+        <p>Owl es un sistema dedicado a la canalización psicológica de personas para la prevención y tratamiento de
+          problemas de salud.</p>
+      </div>
     </swiper-slide>
+
     <swiper-slide>
-      <img src="/assets/img/logo3.png" width="500px" height="400px">
+      <div class="slide-content">
+        <img src="/assets/img/logo3.png" alt="Slide 3">
+        <h2>Estrategias de negocio:</h2>
+        <p>Owl aprovecha la oportunidad de comunicarse para poder intercontectar a las instituciones de salud con las
+          personas, con la finalidad de ayudar a encontrar y establecer el mejor plan de tratamiento de acuerdo a las
+          necesidades de la persona.</p>
+      </div>
     </swiper-slide>
   </swiper-container>
 
