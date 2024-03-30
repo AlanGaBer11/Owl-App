@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { register } from 'swiper/element/bundle';
+
 register();
 
 // prueba para importar datos de la variable de sesión de forma global 
 import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
 
 
 @Component({
@@ -15,7 +17,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit {
   userData: any; 
   darkMode: boolean = false;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private authService: AuthService) {}
   
   ngOnInit(): void{
       this.userService.userData$.subscribe(userData => {
@@ -41,5 +43,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-
+  logout() {
+    this.authService.logout();
+  }
 }

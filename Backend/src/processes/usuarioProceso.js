@@ -10,13 +10,13 @@ const getOneUsuario = async(usuarioId) => {
     return usuarios;
 };
 
-const createNewUsuario = async(nom_usuario, nombre, ap_paterno, ap_materno, correo, passw) => {
-    const usuarios = await usuarioService.createNewUsuario(nom_usuario, nombre, ap_paterno, ap_materno, correo, passw);
+const createNewUsuario = async(nom_usuario, nombre_completo, correo, passw) => {
+    const usuarios = await usuarioService.createNewUsuario(nom_usuario, nombre_completo, correo, passw);
     return usuarios;
 };
 
-const updateOneUsuario = async(nom_usuario, nombre, ap_paterno, ap_materno, correo, passw, usuarioId) => {
-    const usuarios = await usuarioService.updateOneUsuario(nom_usuario, nombre, ap_paterno, ap_materno, correo, passw, usuarioId);
+const updateOneUsuario = async(nom_usuario, nombre_completo, correo, passw, usuarioId) => {
+    const usuarios = await usuarioService.updateOneUsuario(nom_usuario, nombre_completo, correo, passw, usuarioId);
     return usuarios;
 };
 
@@ -25,10 +25,16 @@ const deleteOneUsuario = async (usuarioId) => {
     return usuarios;
 };
 
+const loginProcess = async(correo, passw) =>{
+    const usuarios = await usuarioService.loginProcess(correo, passw); 
+    return usuarios; 
+}; 
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
     createNewUsuario,
     updateOneUsuario,
     deleteOneUsuario,
+    loginProcess,
 };

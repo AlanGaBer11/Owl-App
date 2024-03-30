@@ -8,5 +8,6 @@ router
     .post("/", usuarioController.createNewUsuario)
     .patch("/:usuarioId", usuarioController.updateOneUsuario)
     .delete("/:usuarioId", usuarioController.deleteOneUsuario)
+    .post("/login", usuarioController.loginProcess)    
     
 module.exports = router;

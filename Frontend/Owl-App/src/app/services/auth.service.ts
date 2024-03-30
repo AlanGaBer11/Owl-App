@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { UserService } from './user.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,14 @@ export class AuthService {
   userData: any; 
   errorMessage: any; 
 
-  constructor(private afAuth: AngularFireAuth, private userService: UserService) { }
+  constructor(private afAuth: AngularFireAuth, private userService: UserService, private router: Router) { }
 
   async checkAuthState() {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
         this.userService.setUserData(user); // Almacena el dato del usuario al modelo 
+        this.router.navigate(['/home']); 
       } else {
         this.userData = null;
         this.userService.setUserData(null); // Borra la información del usuario 
@@ -24,6 +26,7 @@ export class AuthService {
     });
   }
 
+  
   async loginWithGoogle() {
     try {
       const res = await this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -44,6 +47,8 @@ export class AuthService {
     try {
       await this.afAuth.signOut();
       this.userData = null;
+      this.userService.setUserData(null); 
+      this.router.navigate(['/home']); 
     } catch (error: any) {
       console.error('Error al cerrar sesión:', error);
       throw error;

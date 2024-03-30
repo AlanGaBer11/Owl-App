@@ -1,13 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>SingUp</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">SingUp</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div> 
+    <p>Crear un usuario</p>
+    <br> 
+    <form [formGroup]="formularioSingup" (ngSubmit)="createOneUsuario()">
+      <div>
+        <div>
+          <p>Nombre de usuario</p>
+          <input type="text" id="nom_usuario" placeholder="Nombre de usuario" formControlName="nom_usuario">      
+          <div *ngIf="formularioSingup.controls['nom_usuario'].invalid && (formularioSingup.controls['nom_usuario'].dirty || formularioSingup.controls['nom_usuario'].touched)">
+            <p *ngIf="formularioSingup.controls['nom_usuario'].hasError('required')">Nombre de usuario es requerido</p>
+            <p *ngIf="formularioSingup.controls['nom_usuario'].hasError('usernameExist')">El nombre de usuario ya está en uso</p>
+          </div>
+        </div>
+        <div>      
+          <div>
+            <p>Nombre completo</p>
+            <input type="text" id="nombre" placeholder="Nombre" formControlName="nombre_completo">      
+            <div *ngIf="formularioSingup.controls['nombre_completo'].invalid && (formularioSingup.controls['nombre_completo'].dirty || formularioSingup.controls['nombre_completo'].touched)">
+              <p *ngIf="formularioSingup.controls['nombre_completo'].hasError('required')">Nombre completo es requerido</p>
+            </div>
+          </div>          
+        </div>
+        <div>
+          <p>Correo</p>
+          <input type="email" id="correo" placeholder="Correo@ejemplo.com" formControlName="correo">
+          <div *ngIf="formularioSingup.controls['correo'].invalid && (formularioSingup.controls['correo'].dirty || formularioSingup.controls['correo'].touched)">
+            <p *ngIf="formularioSingup.controls['correo'].hasError('required')">Correo electrónico es requerido</p>
+            <p *ngIf="formularioSingup.controls['correo'].hasError('email')">Correo electrónico no válido</p>
+            <p *ngIf="formularioSingup.controls['correo'].hasError('emailsExist')">El correo electrónico ya está en uso</p>
+          </div>
+        </div>
+        <div> 
+          <p>Contraseña</p>
+          <input type="password" id="passw" placeholder="Contraseña" formControlName="passw">
+          <div *ngIf="formularioSingup.controls['passw'].invalid && (formularioSingup.controls['passw'].dirty || formularioSingup.controls['passw'].touched)">
+            <p *ngIf="formularioSingup.controls['passw'].hasError('required')">Contraseña es requerida</p>
+            <p *ngIf="formularioSingup.controls['passw'].hasError('minlength')">La contraseña debe tener al menos 6 caracteres</p>
+            <p *ngIf="formularioSingup.controls['passw'].hasError('pattern')">La contraseña debe contener al menos una mayúscula, un número y un signo especial</p>
+          </div>
+        </div>
+      </div>    
+      <ion-button type="submit" [disabled]="formularioSingup.invalid">Guardar</ion-button>
+    </form>
+  </div>
 </ion-content>

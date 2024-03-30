@@ -40,9 +40,9 @@ const getOneUsuario = async(usuarioId) => {
 };
 
 // POST
-const createNewUsuario = async(nom_usuario, nombre, ap_paterno, ap_materno, correo, passw) => {
+const createNewUsuario = async(nom_usuario, nombre_completo, correo, passw) => {
     return new Promise(function(resolve, reject){
-        const sql = "INSERT INTO owldb.usuarios (nom_usuario, nombre, ap_paterno, ap_materno, correo, passw) VALUES ('"+ nom_usuario +"', '"+ nombre +"', '"+ ap_paterno +"', '"+ ap_materno +"', '"+ correo +"', '"+ passw +"')";
+        const sql = "INSERT INTO owldb.usuarios (nom_usuario, nombre_completo, correo, passw) VALUES ('"+ nom_usuario +"', '"+ nombre_completo +"', '"+ correo +"', '"+ passw +"')";
         connection.query(sql, (error, results) => {
             if (error){
                 return reject (error);
@@ -53,9 +53,9 @@ const createNewUsuario = async(nom_usuario, nombre, ap_paterno, ap_materno, corr
 };
 
 // PATCH
-const updateOneUsuario = async(nom_usuario, nombre, ap_paterno, ap_materno, correo, passw, usuarioId) => {
+const updateOneUsuario = async(nom_usuario, nombre_completo, correo, passw, usuarioId) => {
     return new Promise(function(resolve, reject){
-        const sql = "UPDATE owldb.usuarios SET nom_usuario = '"+ nom_usuario +"', nombre = '"+ nombre +"', ap_paterno = '"+ ap_paterno +"', ap_materno = '"+ ap_materno +"', correo = '"+ correo +"', passw = '"+ passw +"' WHERE id_usuario = '"+ usuarioId + "'";
+        const sql = "UPDATE owldb.usuarios SET nom_usuario = '"+ nom_usuario +"', nombre = '"+ nombre_completo + "', correo = '"+ correo +"', passw = '"+ passw +"' WHERE id_usuario = '"+ usuarioId + "'";
         connection.query(sql, (error, results) => {
             if (error){
                 return reject (error);
@@ -78,7 +78,19 @@ const deleteOneUsuario = async(usuarioId) => {
     });
 };
 
-
+  // Login validacion 
+  const loginProcess = async (correo, passw) => {
+    return new Promise(function(resolve, reject) {
+        const sql = `SELECT * FROM usuarios WHERE correo = ? AND passw = ?`; 
+        connection.query(sql, [correo, passw], (error, results) => {
+            if (error) {
+                console.error('Error en la consulta SQL:', error);
+                return reject(error);
+            }
+            resolve(results);
+        });         
+    }); 
+};
 
 module.exports = {
     getAllUsuarios,
@@ -86,4 +98,5 @@ module.exports = {
     createNewUsuario,
     updateOneUsuario,
     deleteOneUsuario,
+    loginProcess,
 }

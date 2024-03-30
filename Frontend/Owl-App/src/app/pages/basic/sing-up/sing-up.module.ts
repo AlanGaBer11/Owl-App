@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { SingUpPageRoutingModule } from './sing-up-routing.module';
 
 import { SingUpPage } from './sing-up.page';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SingUpPageRoutingModule
+    SingUpPageRoutingModule, 
+    ReactiveFormsModule, 
+    HttpClientModule
   ],
   declarations: [SingUpPage]
 })

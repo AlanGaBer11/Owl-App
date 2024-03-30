@@ -5,9 +5,7 @@ USE owldb;
 CREATE TABLE Usuarios (
   id_usuario INT PRIMARY KEY auto_increment,
   nom_usuario VARCHAR(45),
-  nombre VARCHAR(45), 
-  ap_paterno VARCHAR(45),
-  ap_materno VARCHAR(45),
+  nombre_completo VARCHAR(45),   
   correo VARCHAR(45),
   passw VARCHAR(45)
 );
