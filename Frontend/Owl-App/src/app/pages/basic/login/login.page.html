@@ -1,7 +1,9 @@
 
 <ion-content>  
   <div class=".box-container">    
-    <strong> Ola, login</strong>
+    <br> 
+    <strong> Login</strong>
+    <br>
     <div *ngIf="userData">
       <img [src]="userData.photoURL" alt="Profile Picture" style="border-radius: 50%; border: 2px solid #000;">
       <p>{{ userData.displayName }}</p>
@@ -13,17 +15,19 @@
       <form [formGroup]="formularioLogin" (ngSubmit)="login()">
         <ion-item>
           <ion-label position="floating">Correo</ion-label>
+          <br>
           <ion-input formControlName="correo" type="email"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="floating"> Password </ion-label>
+          <br>
           <ion-input formControlName="password" type="password"></ion-input>
         </ion-item>                
         <ion-button type="submit" [disabled]="!formularioLogin.valid">Enviar</ion-button>
       </form>
       <h6> O prueba</h6>
       <ion-button [routerLink]="['/sing-up']">Crear nueva cuenta</ion-button>
-      <button (click)="loginGoogle()">Iniciar sesión con Google</button>
+      <ion-button (click)="loginGoogle()">Iniciar sesión con Google</ion-button>
     </div>
 
   </div>  
