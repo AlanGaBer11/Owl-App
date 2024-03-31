@@ -1,0 +1,116 @@
+<ion-content>
+  <div id="container">
+    <div class="header">
+      <h1 style="font-weight: bold;" class="centered">Clínicas</h1>
+      <div class="centered">
+        <ion-button style="color: white;" (click)="openAgregarModal()">Agregar una Clínica</ion-button>
+      </div>
+    </div>
+
+    <!-- TABLA -->
+    <div class="tabla-container">
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Clínica</th>
+            <th>Descripción</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of clinica" [class.active-row]="c === clinicaSeleccionada">
+            <td>{{ c.nombre }}</td>
+            <td>{{ c.descripcion }}</td>
+            <td><ion-button style="color: white;" color="medium" (click)="openEditarModal(c)">Editar</ion-button></td>
+            <td><ion-button style="color: white;" color="danger" (click)="eliminarClinica(c.id_clinica)">Eliminar</ion-button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal de agregar clínica -->
+  <ion-modal [isOpen]="isAgregarModalOpen" (didDismiss)="didDismissAgregarModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Agregar una Clínica</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="closeAgregarModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form [formGroup]="agClinica" class="animated slideInUp">
+          <ion-item>
+            <ion-label position="floating">Nombre de la institución:</ion-label>
+            <ion-input type="text" formControlName="nombre" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descripción:</ion-label>
+            <ion-input type="text" formControlName="descripcion" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Dirección:</ion-label>
+            <ion-input type="text" formControlName="direccion" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Número de teléfono:</ion-label>
+            <ion-input type="text" formControlName="num_tel" required></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button expand="block" (click)="agregarClinica(); closeAgregarModal()">Crear</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button color="danger" expand="block" (click)="closeAgregarModal()">Cancelar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Modal de editar clínica -->
+  <ion-modal [isOpen]="isEditarModalOpen" (didDismiss)="didDismissEditarModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Editar Clínica</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="closeEditarModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form [formGroup]="acClinica" class="animated slideInUp">
+          <ion-item>
+            <ion-label position="floating">Nombre de la institución:</ion-label>
+            <ion-input type="text" formControlName="nombre" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descripción:</ion-label>
+            <ion-input type="text" formControlName="descripcion" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Dirección:</ion-label>
+            <ion-input type="text" formControlName="direccion" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Número de teléfono:</ion-label>
+            <ion-input type="text" formControlName="num_tel" required></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button expand="block" (click)="actualizarClinica()">Actualizar</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button color="danger" expand="block" (click)="closeEditarModal()">Cancelar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

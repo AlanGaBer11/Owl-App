@@ -1,0 +1,47 @@
+ion-content {
+  --ion-background-color: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  .box-container {
+    background-color: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+
+    strong {
+      font-size: 24px;
+      text-align: center;
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    form {
+      ion-label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      ion-input {
+        width: calc(100% - 16px); // Reducir el ancho para compensar el padding
+        margin-bottom: 12px;
+      }
+
+      ion-text {
+        display: block;
+        margin-top: 4px;
+        p {
+          margin: 4px 0;
+        }
+      }
+
+      ion-button {
+        margin-top: 20px;
+      }
+    }
+  }
+}

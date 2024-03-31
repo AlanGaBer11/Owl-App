@@ -1,0 +1,193 @@
+<ion-content>
+  <div id="container">
+    <div class="header">
+      <h1 style="font-weight: bold;" class="centered">Pacientes</h1>
+      <div class="centered">
+        <ion-button style="color: white;" (click)="openAgregarModal()">Agregar un Paciente</ion-button>
+      </div>
+    </div>
+
+    <!-- TABLA -->
+    <div class="tabla-container">
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Nombre del paciente</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of paciente" [class.active-row]="p === pacienteSeleccionado">
+            <td>{{ p.nombre_cliente }}</td>
+            <td><ion-button style="color: white;" color="medium" (click)="openEditarModal(p)">Editar</ion-button></td>
+            <td><ion-button style="color: white;" color="danger"
+                (click)="eliminarPaciente(p.id_paciente)">Eliminar</ion-button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal de agregar clínica -->
+  <ion-modal [isOpen]="isAgregarModalOpen" (didDismiss)="didDismissAgregarModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Agregar un Paciente</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="closeAgregarModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form [formGroup]="agPaciente" class="animated slideInUp">
+          <ion-item>
+            <ion-label position="floating">Nombre(s):</ion-label>
+            <ion-input type="text" formControlName="nombre_cliente" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Apellido paterno:</ion-label>
+            <ion-input type="text" formControlName="ap_pa" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Apellido materno:</ion-label>
+            <ion-input type="text" formControlName="ap_ma" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Fecha de nacimiento:</ion-label>
+            <ion-input type="date" formControlName="fecha_nacimiento" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-select formControlName="genero" placeholder="Género" required>
+              <ion-select-option value="Masculino">Masculino</ion-select-option>
+              <ion-select-option value="Femenino">Femenino</ion-select-option>
+              <ion-select-option value="Otro">Otro</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-select formControlName="estado_civil" placeholder="Estado Civil" required>
+              <ion-select-option value="soltero">Soltero</ion-select-option>
+              <ion-select-option value="casado">Casado</ion-select-option>
+              <ion-select-option value="divorciado">Divorciado</ion-select-option>
+              <ion-select-option value="viudo">Viudo</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Contacto:</ion-label>
+            <ion-input formControlName="contacto" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>¿Está registrado en Owl?</ion-label>
+            <ion-radio-group formControlName="registro_online">
+              <ion-radio value="Si">Sí</ion-radio>
+              <ion-radio value="No">No</ion-radio>
+            </ion-radio-group>
+          </ion-item>
+          <ion-item>
+            <ion-label>¿Cuenta con antecedentes médicos?</ion-label>
+            <ion-radio-group formControlName="antecedentes_medicos">
+              <ion-radio value="Si">Sí</ion-radio>
+              <ion-radio value="No">No</ion-radio>
+            </ion-radio-group>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Medicamentos</ion-label>
+            <ion-input formControlName="medicamentos_actuales" required></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button expand="block" (click)="agregarPaciente(); closeAgregarModal()">Crear</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button color="danger" expand="block" (click)="closeAgregarModal()">Cancelar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Modal de editar clínica -->
+  <ion-modal [isOpen]="isEditarModalOpen" (didDismiss)="didDismissEditarModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Editar Paciente</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="closeEditarModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form [formGroup]="acPaciente" class="animated slideInUp">
+          <ion-item>
+            <ion-label position="floating">Nombre(s):</ion-label>
+            <ion-input type="text" formControlName="nombre_cliente" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Apellido paterno:</ion-label>
+            <ion-input type="text" formControlName="ap_pa" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Apellido materno:</ion-label>
+            <ion-input type="text" formControlName="ap_ma" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Fecha de nacimiento:</ion-label>
+            <ion-input type="date" formControlName="fecha_nacimiento" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-select formControlName="genero" placeholder="Género" required>
+              <ion-select-option value="Masculino">Masculino</ion-select-option>
+              <ion-select-option value="Femenino">Femenino</ion-select-option>
+              <ion-select-option value="Otro">Otro</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-select formControlName="estado_civil" placeholder="Estado Civil" required>
+              <ion-select-option value="soltero">Soltero</ion-select-option>
+              <ion-select-option value="casado">Casado</ion-select-option>
+              <ion-select-option value="divorciado">Divorciado</ion-select-option>
+              <ion-select-option value="viudo">Viudo</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Contacto:</ion-label>
+            <ion-input formControlName="contacto" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>¿Está registrado en Owl?</ion-label>
+            <ion-radio-group formControlName="registro_online">
+              <ion-radio value="Si">Sí</ion-radio>
+              <ion-radio value="No">No</ion-radio>
+            </ion-radio-group>
+          </ion-item>
+          <ion-item>
+            <ion-label>¿Cuenta con antecedentes médicos?</ion-label>
+            <ion-radio-group formControlName="antecedentes_medicos">
+              <ion-radio value="Si">Sí</ion-radio>
+              <ion-radio value="No">No</ion-radio>
+            </ion-radio-group>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Medicamentos</ion-label>
+            <ion-input formControlName="medicamentos_actuales" required></ion-input>
+          </ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button expand="block" (click)="actualizarPaciente()">Actualizar</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button color="danger" expand="block" (click)="closeEditarModal()">Cancelar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

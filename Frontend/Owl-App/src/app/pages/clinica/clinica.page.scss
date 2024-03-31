@@ -1,0 +1,94 @@
+ion-content {
+  --ion-background-color: auto;
+
+  #container {
+    padding: 20px;
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+
+      .centered {
+        display: block;
+        text-align: center;
+      }
+    }
+
+    .tabla-container {
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+
+    .content-table {
+      border-collapse: collapse;
+      margin: 0 auto;
+      font-size: 0.9em;
+      width: 100%;
+      max-width: 800px;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+      thead tr {
+        background-color: #333769;
+        color: #fff;
+        text-align: left;
+        font-weight: bold;
+      }
+
+      th, td {
+        padding: 12px 15px;
+        text-align: center;
+      }
+
+      tbody tr {
+        border-bottom: 1px solid auto;
+
+        &:nth-of-type(even) {
+          background-color: auto;
+        }
+
+        &:last-of-type {
+          border-bottom: 2px solid #333769;
+        }
+
+        &.active-row {
+          font-weight: bold;
+          color: #333769;
+        }
+      }
+    }
+  }
+}
+
+ion-modal {
+  --height: 54%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+ion-modal::part(backdrop) {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+ion-modal ion-toolbar {
+  --background: #333769;
+  --color: white;
+}
+
+.animated {
+  animation-duration: 0.5s;
+}
+
+.slideInUp {
+  animation-name: slideInUp;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}

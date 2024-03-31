@@ -1,0 +1,163 @@
+<ion-content>
+  <div id="container">
+    <div class="header">
+      <h1 style="font-weight: bold;" class="centered">Profesionales</h1>
+      <div class="centered">
+        <ion-button style="color: white;" (click)="openAgregarModal()">Agregar un Profesional</ion-button>
+      </div>
+    </div>
+
+    <!-- TABLA -->
+    <div class="tabla-container">
+      <table class="content-table">
+        <thead>
+          <tr>
+            <th>Nombre del Profesional</th>
+            <th>Especialidad</th>
+            <th>Clínica</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of profesional" [class.active-row]="p === profSeleccionado">
+            <td>{{ p.nom }}</td>
+            <td>{{ p.especialidad }}</td>
+            <td>{{p.nom_clinica}}</td>
+            <td><ion-button style="color: white;" color="medium" (click)="openEditarModal(p)">Editar</ion-button></td>
+            <td><ion-button style="color: white;" color="danger" (click)="eliminarProf(p.id_pro)">Eliminar</ion-button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal de agregar clínica -->
+  <ion-modal [isOpen]="isAgregarModalOpen" (didDismiss)="didDismissAgregarModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Agregar un Profesional</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="closeAgregarModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form [formGroup]="agProf" class="animated slideInUp">
+          <ion-item>
+            <ion-label position="floating">Nombre(s):</ion-label>
+            <ion-input type="text" formControlName="nom"  required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Apellido(s):</ion-label>
+            <ion-input type="text" formControlName="ap" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Especialidad:</ion-label>
+            <ion-input type="text" formControlName="especialidad" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Número de teléfono:</ion-label>
+            <ion-input type="text" formControlName="num_telefono" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Correo electrónico:</ion-label>
+            <ion-input type="text" formControlName="correo_elec" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-select formControlName="horario" placeholder="Seleccione Horario" required>
+              <ion-select-option value="Mañana">Mañana</ion-select-option>
+              <ion-select-option value="Tarde">Tarde</ion-select-option>
+              <ion-select-option value="Noche">Noche</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Cedula profesional:</ion-label>
+            <ion-input type="text" formControlName="cedula_profesional" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-select formControlName="nom_clinica" placeholder="Seleccione Clínica" required>
+              <ion-select-option *ngFor="let c of clinicas" [value]="c.nombre">{{c.nombre}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button expand="block" (click)="agregarProf(); closeAgregarModal()">Crear</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button color="danger" expand="block" (click)="closeAgregarModal()">Cancelar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Modal de editar clínica -->
+  <ion-modal [isOpen]="isEditarModalOpen" (didDismiss)="didDismissEditarModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Editar Profesional</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="closeEditarModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <form [formGroup]="acProf" class="animated slideInUp">
+          <ion-item>
+            <ion-label position="floating">Nombre(s):</ion-label>
+            <ion-input type="text" formControlName="nom" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Apellido(s):</ion-label>
+            <ion-input type="text" formControlName="ap" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Especialidad:</ion-label>
+            <ion-input type="text" formControlName="especialidad"  required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Número de teléfono:</ion-label>
+            <ion-input type="text" formControlName="num_telefono" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Correo electrónico:</ion-label>
+            <ion-input type="text" formControlName="correo_elec" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-select formControlName="horario" placeholder="Seleccione Horario" required>
+              <ion-select-option value="Mañana">Mañana</ion-select-option>
+              <ion-select-option value="Tarde">Tarde</ion-select-option>
+              <ion-select-option value="Noche">Noche</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Cedula profesional:</ion-label>
+            <ion-input type="text" formControlName="cedula_profesional" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"></ion-label>
+            <ion-select formControlName="nom_clinica" placeholder="Seleccione Clínica" required>
+              <ion-select-option *ngFor="let c of clinicas" [value]="c.nombre">{{c.nombre}}</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-row>
+            <ion-col size="6">
+              <ion-button expand="block" (click)="actualizarProf()">Actualizar</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button color="danger" expand="block" (click)="closeEditarModal()">Cancelar</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

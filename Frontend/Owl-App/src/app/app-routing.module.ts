@@ -12,11 +12,6 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
-
-  {
-    path: 'ver-paciente',
-    loadChildren: () => import('./pages/paciente/ver-paciente/ver-paciente.module').then( m => m.VerPacientePageModule)
-  },
   {
     path: 'login',
     loadChildren: () => import('./pages/basic/login/login.module').then( m => m.LoginPageModule)
@@ -54,48 +49,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/articulos/nosotros/nosotros.module').then( m => m.NosotrosPageModule)
   },
   {
-    path: 'nuevo-paciente',
-    loadChildren: () => import('./pages/paciente/nuevo-paciente/nuevo-paciente.module').then( m => m.NuevoPacientePageModule)
+    path: 'clinica',
+    loadChildren: () => import('./pages/clinica/clinica.module').then( m => m.ClinicaPageModule)
   },
   {
-    path: 'edi-paciente',
-    loadChildren: () => import('./pages/paciente/edi-paciente/edi-paciente.module').then( m => m.EdiPacientePageModule)
+    path: 'profesional',
+    loadChildren: () => import('./pages/profesional/profesional.module').then( m => m.ProfesionalPageModule)
   },
   {
-    path: 'ver-clinica',
-    loadChildren: () => import('./pages/clinicas/ver-clinica/ver-clinica.module').then( m => m.VerClinicaPageModule)
+    path: 'paciente',
+    loadChildren: () => import('./pages/paciente/paciente.module').then( m => m.PacientePageModule)
   },
   {
-    path: 'nueva-clinica',
-    loadChildren: () => import('./pages/clinicas/nueva-clinica/nueva-clinica.module').then( m => m.NuevaClinicaPageModule)
+    path: 'cita',
+    loadChildren: () => import('./pages/cita/cita.module').then( m => m.CitaPageModule)
   },
   {
-    path: 'edi-clinica',
-    loadChildren: () => import('./pages/clinicas/edi-clinica/edi-clinica.module').then( m => m.EdiClinicaPageModule)
-  },
-  {
-    path: 'card-clinica',
-    loadChildren: () => import('./pages/clinicas/card-clinica/card-clinica.module').then( m => m.CardClinicaPageModule)
-  },
-  {
-    path: 'ver-prof',
-    loadChildren: () => import('./pages/profesionales/ver-prof/ver-prof.module').then( m => m.VerProfPageModule)
-  },
-  {
-    path: 'nuevo-prof',
-    loadChildren: () => import('./pages/profesionales/nuevo-prof/nuevo-prof.module').then( m => m.NuevoProfPageModule)
-  },
-  {
-    path: 'edi-prof',
-    loadChildren: () => import('./pages/profesionales/edi-prof/edi-prof.module').then( m => m.EdiProfPageModule)
-  },
-  {
-    path: 'ver-cita',
-    loadChildren: () => import('./pages/citas/ver-cita/ver-cita.module').then( m => m.VerCitaPageModule)
-  },
-  {
-    path: 'nueva-cita',
-    loadChildren: () => import('./pages/citas/nueva-cita/nueva-cita.module').then( m => m.NuevaCitaPageModule)
+    path: 'calendario',
+    loadChildren: () => import('./pages/basic/calendario/calendario.module').then( m => m.CalendarioPageModule)
   },
 
 ];

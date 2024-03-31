@@ -33,6 +33,7 @@ const firebaseConfig = {
     BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule, 
+    HttpClientModule,
     // Imports de los modulos para el login 
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFireAuthModule,
