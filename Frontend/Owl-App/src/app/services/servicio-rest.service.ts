@@ -11,6 +11,12 @@ export class ServicioRestService {
   public get (url:string){
     return this.http.get(url);
   }
+  
+  // GET ONE
+  public getOne(url: string, id: string) {
+    const urlWithId = `${url}/${id}`; // Concatenamos el ID al URL
+    return this.http.get(urlWithId);
+  }
 
   // DELETE
   public delete (url:string){
@@ -23,8 +29,8 @@ export class ServicioRestService {
   }
 
     // PATCH
-    public patch (url:string, data:any, options?: any){
-      const elemento = `${url}`; 
-      return this.http.patch(elemento, data, options); 
-    }
+  public patch (url:string, data:any, options?: any){
+    const elemento = `${url}`; 
+    return this.http.patch(elemento, data, options); 
+  }
 }

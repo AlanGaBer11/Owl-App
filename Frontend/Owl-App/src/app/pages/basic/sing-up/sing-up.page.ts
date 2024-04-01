@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
-import { Router } from '@angular/router'; 
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-sing-up',
@@ -11,24 +12,58 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 })
 export class SingUpPage implements OnInit {
   allUsers: any[] = [];
-  userData:any; 
-  formularioSingup: FormGroup; 
+  userData: any;
+  formularioSingup: FormGroup;
+  passwordFieldType: string = 'password'; // Inicialmente oculto
 
-  constructor(private http: HttpClient, private userService: UserService, private router: Router, private fb: FormBuilder) { 
+
+  constructor(
+    private http: HttpClient,
+    private userService: UserService,
+    private router: Router,
+    private fb: FormBuilder,
+    private alertController: AlertController
+  ) {
     this.formularioSingup = this.fb.group({
-      'nom_usuario': ['', Validators.required], 
-      'nombre_completo': ['', Validators.required], 
-      'correo': ['', [Validators.required, Validators.email]], 
-      'password': ['', [
-        Validators.required, 
-        Validators.minLength(6),
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/)
-      ]]
-    }); 
+      nom_usuario: ['', Validators.required],
+      nombre_completo: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+      passw: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.pattern(
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{6,}$/
+          ),
+        ],
+      ],
+    });
   }
 
   ngOnInit() {
-    this.getUsuario(); 
+    this.getUsuario();
+  }
+
+  // Método para mostrar una alerta
+  public async mostrarAlerta(mensaje: string) {
+    const alert = await this.alertController.create({
+      header: 'Alerta',
+      message: mensaje,
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.router.navigate(['login']); // MUESTRA MENDAJE DESPUES DE CREAR UNA CUENTA Y  DESPUES DE DAR OK, REDIRECCIONA A LOGIN
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+  togglePasswordVisibility() {
+    console.log('Cambiao')
+    this.passwordFieldType = this.passwordFieldType === 'text' ? 'password' : 'text';
   }
 
   getErrorMessage(controlName: string) {
@@ -48,65 +83,87 @@ export class SingUpPage implements OnInit {
     return '';
   }
 
-  getUsuario(){
-    this.http.get<any>('http://localhost:3000/api/v1/usuario').subscribe(data =>{
-      this.allUsers = data; 
-    }, error =>{
-      console.error('Error al obtener usuarios: ', error); 
-    }); 
+  getUsuario() {
+    this.http.get<any>('http://localhost:3000/api/v1/usuario').subscribe(
+      (data) => {
+        this.allUsers = data;
+      },
+      (error) => {
+        console.error('Error al obtener usuarios: ', error);
+      }
+    );
   }
 
-  getOneUsuario(idUsuario: number){
-    this.http.get<any>('http://localhost:3000/api/v1/usuario/' + idUsuario).subscribe(data =>{
-      console.log('Usuarios: ', data);       
-    }, error =>{
-      console.log('Error al obtener a el usaurio: ', error); 
-    });
-  } 
+  getOneUsuario(idUsuario: number) {
+    this.http
+      .get<any>('http://localhost:3000/api/v1/usuario/' + idUsuario)
+      .subscribe(
+        (data) => {
+          console.log('Usuarios: ', data);
+        },
+        (error) => {
+          console.log('Error al obtener a el usaurio: ', error);
+        }
+      );
+  }
 
-  createOneUsuario(){
-    if (this.formularioSingup.valid){
-      const email = this.formularioSingup.value.correo; 
-      const username = this.formularioSingup.value.nom_usuario; 
+  createOneUsuario() {
+    if (this.formularioSingup.valid) {
+      const email = this.formularioSingup.value.correo;
+      const username = this.formularioSingup.value.nom_usuario;
 
-      const emialExist = this.allUsers.some(user => user.correo === email); 
-      const usernameExist = this.allUsers.some(user => user.nom_usuario === username); 
+      const emialExist = this.allUsers.some((user) => user.correo === email);
+      const usernameExist = this.allUsers.some(
+        (user) => user.nom_usuario === username
+      );
 
-      if(emialExist){
-        this.formularioSingup.controls['correo'].setErrors({ emialExist: true}); 
+      if (emialExist) {
+        this.formularioSingup.controls['correo'].setErrors({
+          emialExist: true,
+        });
       }
 
-      if(usernameExist){
-        this.formularioSingup.controls['nom_usuario'].setErrors({ usernameExist: true}); 
+      if (usernameExist) {
+        this.formularioSingup.controls['nom_usuario'].setErrors({
+          usernameExist: true,
+        });
       }
 
-      if(!emialExist && !usernameExist){
+      if (!emialExist && !usernameExist) {
         const nuevoUsuario = {
-          nom_usuario: this.formularioSingup.value.nom_usuario, 
-          nombre_completo: this.formularioSingup.value.nombre_completo, 
-          correo: this.formularioSingup.value.correo, 
-          passw: this.formularioSingup.value.passw
+          nom_usuario: this.formularioSingup.value.nom_usuario,
+          nombre_completo: this.formularioSingup.value.nombre_completo,
+          correo: this.formularioSingup.value.correo,
+          passw: this.formularioSingup.value.passw,
         };
-    
-        this.http.post<any>('http://localhost:3000/api/v1/usuario', nuevoUsuario).subscribe(response => {
-          console.log(response); 
-          this.userService.setUserData(response); 
-          this.userData = response; 
-          this.router.navigate(['/home']);
-          }, error =>{
-            console.error('Error al agregar a un usuario', error); 
-          });   
-      } 
-    }              
+
+        this.http
+          .post<any>('http://localhost:3000/api/v1/usuario', nuevoUsuario)
+          .subscribe(
+            (response) => {
+              console.log(response);
+              this.userService.setUserData(response);
+              this.userData = response;
+            },
+            (error) => {
+              console.error('Error al agregar un usuario', error.error);
+            }
+          );
+        this.mostrarAlerta("Cuante Creada");
+      }
+    }
   }
 
-  deleteUsuario(idUsuario: number){
-    this.http.delete<any>('http://localhost:3000/api/v1/usuario/' + idUsuario).subscribe(response => {
-      console.log('Usuario eliminado', response);
-    }, error =>{
-      console.error('Error al eliminar el usuario', error); 
-    });
+  deleteUsuario(idUsuario: number) {
+    this.http
+      .delete<any>('http://localhost:3000/api/v1/usuario/' + idUsuario)
+      .subscribe(
+        (response) => {
+          console.log('Usuario eliminado', response);
+        },
+        (error) => {
+          console.error('Error al eliminar el usuario', error);
+        }
+      );
   }
-
-  
 }

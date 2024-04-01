@@ -31,7 +31,7 @@
           <div class="ion-padding" slot="content" routerLink="/nosotros">
             <ion-icon name="sparkles"></ion-icon> Owl
           </div>
-          <div class="ion-padding" slot="content" routerLink="/card-clinica">
+          <div class="ion-padding" slot="content" routerLink="/card-art">
             <ion-icon name="medkit"></ion-icon> Clínicas
           </div>
         </ion-accordion>
@@ -52,9 +52,9 @@
     </ion-content>
 
     <ion-item>
-      <ion-toggle slot="end" [checked]="darkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
-      <ion-icon *ngIf="!darkMode" name="sunny" class="sun"></ion-icon>
-      <ion-icon *ngIf="darkMode" name="moon" class="moon"></ion-icon>
+      <ion-toggle slot="start" [checked]="darkMode" (ionChange)="toggleDarkMode()"></ion-toggle>
+      <ion-icon style="margin-left: 40px;" *ngIf="!darkMode" name="sunny" class="sun"></ion-icon>
+      <ion-icon style="margin-left: 40px;" *ngIf="darkMode" name="moon" class="moon"></ion-icon>
     </ion-item>
   </ion-menu>
   <!-- FIN SLIDE MENU -->
@@ -120,6 +120,6 @@
       <!-- MOSTRAR PÁGINAS -->
       <ion-router-outlet></ion-router-outlet>
     </ion-content>
-
+    
   </div>
 </ion-app>

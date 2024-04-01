@@ -19,6 +19,8 @@ export class CitaPage implements OnInit {
   public pacientes: any = [];
   public clinicas: any = [];
   public profesionales: any = [];
+  public pacienteSeleccionado: any;
+  public fechaSeleccionada: any;
 
   constructor(
     private servicioRest: ServicioRestService,
@@ -118,7 +120,7 @@ export class CitaPage implements OnInit {
       )
       .subscribe(
         (respuesta) => {
-          console.log('Cita Actualizado', respuesta);
+          console.log('Cita ActualizadA', respuesta);
           // Limpiar el formulario y deseleccionar
           this.acCita.reset();
           this.citaSeleccionada = null;
@@ -149,6 +151,7 @@ export class CitaPage implements OnInit {
       this.profesionales = respuesta;
     });
   }
+  
 
   // Modales
   async openAgregarModal() {
@@ -186,10 +189,12 @@ export class CitaPage implements OnInit {
     this.citaSeleccionada = null;
   }
 
-  async openHistorialModal(cita: any){
-    this.citaSeleccionada = cita;
-    this.historialModalOpen = true;
-  }
+async openHistorialModal(cita: any){
+  this.citaSeleccionada = cita;
+  this.pacienteSeleccionado = cita.nom_paciente;
+  this.fechaSeleccionada = new Date(cita.fecha); // Guardar la fecha de la cita
+  this.historialModalOpen = true;
+}
   
   closeHistorialModal(){
     this.modalController.dismiss();

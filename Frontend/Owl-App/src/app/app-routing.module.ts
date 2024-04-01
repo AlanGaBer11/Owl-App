@@ -68,6 +68,10 @@ const routes: Routes = [
     path: 'calendario',
     loadChildren: () => import('./pages/basic/calendario/calendario.module').then( m => m.CalendarioPageModule)
   },
+  {
+    path: 'card-art',
+    loadChildren: () => import('./pages/articulos/card-art/card-art.module').then( m => m.CardArtPageModule)
+  },
 
 ];
 

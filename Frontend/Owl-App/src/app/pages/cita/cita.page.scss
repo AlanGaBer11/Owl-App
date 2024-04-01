@@ -75,6 +75,11 @@ ion-modal {
     --background: #333769;
     --color: white;
   }
+  
+  ion-datetime .highlighted-date {
+    background-color: yellow; // Estilo para resaltar la fecha
+  }
+  
 }
 
 .animated {
