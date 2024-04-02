@@ -117,7 +117,7 @@ export class PacientePage implements OnInit {
   public actualizarPaciente() {
     const pacienteActualizado = this.acPaciente.value;
     this.servicioRest
-      .patch(`http://localhost:3000/api/v1/clinica/${this.pacienteSeleccionado.id_paciente}`, pacienteActualizado)
+      .patch(`http://localhost:3000/api/v1/paciente/${this.pacienteSeleccionado.id_paciente}`, pacienteActualizado)
       .subscribe(
         (respuesta) => {
           console.log('Clínica Actualizada', respuesta);

@@ -11,11 +11,11 @@ const getOneCita = async(req, res) => {
 };
 
 const createNewCita = async(req, res) => {
-    const citas = await citasProceso.createNewCita(req.body.descripcion, req.body.fecha, req.body.hora, req.body.id_usuario, req.body.nom_paciente, req.body.nom_profesional, req.body.nom_clinica);
+    const citas = await citasProceso.createNewCita(req.body.descripcion, req.body.fecha, req.body.hora, req.body.nom_paciente, req.body.nom_profesional, req.body.nom_clinica);
     res.send(citas);
 };
 const updateOneCita = async(req, res) => {
-    const citas = await citasProceso.updateOneCita(req.body.descripcion, req.body.fecha, req.body.hora, req.body.id_usuario, req.body.nom_paciente, req.body.nom_profesional, req.body.nom_clinica, req.params.citaId);
+    const citas = await citasProceso.updateOneCita(req.body.descripcion, req.body.fecha, req.body.hora, req.body.nom_paciente, req.body.nom_profesional, req.body.nom_clinica, req.params.citaId);
     res.send(citas);
 };
 

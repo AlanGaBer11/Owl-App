@@ -16,11 +16,14 @@ export class CitaPage implements OnInit {
   public isAgregarModalOpen = false;
   public isEditarModalOpen = false;
   public historialModalOpen = false;
+  public verCitaModalOpen = false;
+
   public pacientes: any = [];
   public clinicas: any = [];
   public profesionales: any = [];
   public pacienteSeleccionado: any;
   public fechaSeleccionada: any;
+  
 
   constructor(
     private servicioRest: ServicioRestService,
@@ -116,7 +119,7 @@ export class CitaPage implements OnInit {
 
   public actualizarCita() {
     const citaActualizada = this.acCita.value;
-    this.servicioRest.patch(`http://localhost:3000/api/v1/cita/${this.citaSeleccionada.id_pro}`,citaActualizada
+    this.servicioRest.patch(`http://localhost:3000/api/v1/cita/${this.citaSeleccionada.id_cita}`,citaActualizada
       )
       .subscribe(
         (respuesta) => {
@@ -203,4 +206,19 @@ async openHistorialModal(cita: any){
   didDismissHistModal() {
     this.historialModalOpen = false;
   }
+
+  // Agregar la función para abrir el modal
+async openVerCitaModal(cita: any, ) {
+  this.citaSeleccionada = cita;
+  this.verCitaModalOpen = true;
+}
+
+// Agregar la función para cerrar el modal
+closeVerCitaModal() {
+  this.modalController.dismiss();
+}
+
+didDismissVerCitaModal() {
+  this.verCitaModalOpen = false;
+}
 }
