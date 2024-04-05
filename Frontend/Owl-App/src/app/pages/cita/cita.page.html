@@ -18,6 +18,7 @@
             <th></th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -25,9 +26,12 @@
             <td>{{ ci.nom_paciente }}</td>
             <td>{{ ci.fecha }}</td>
             <td>{{ ci.hora}}</td>
+            <td><ion-button (click)="openVerCitaModal(ci)">Ver cita</ion-button></td>
             <td><ion-button style="color: white;" color="medium" (click)="openEditarModal(ci)">Editar</ion-button></td>
-            <td><ion-button style="color: white; --background: #10bCC1;" (click)="openHistorialModal(ci)">Historial</ion-button></td>
-            <td><ion-button style="color: white;" color="danger" (click)="eliminarCita(ci.id_cita)">Eliminar</ion-button>
+            <td><ion-button style="color: white; --background: #10bCC1;"
+                (click)="openHistorialModal(ci)">Historial</ion-button></td>
+            <td><ion-button style="color: white;" color="danger"
+                (click)="eliminarCita(ci.id_cita)">Eliminar</ion-button>
             </td>
           </tr>
         </tbody>
@@ -109,7 +113,8 @@
           <ion-item>
             <ion-label position="floating"></ion-label>
             <ion-select formControlName="nom_paciente" placeholder="Nombre del Paciente" required>
-              <ion-select-option *ngFor="let pa of pacientes" [value]="pa.nombre_cliente">{{pa.nombre_cliente}}</ion-select-option>
+              <ion-select-option *ngFor="let pa of pacientes"
+                [value]="pa.nombre_cliente">{{pa.nombre_cliente}}</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
@@ -121,7 +126,8 @@
           <ion-item>
             <ion-label position="floating"></ion-label>
             <ion-select formControlName="nom_profesional" placeholder="Seleccione Profesional" required>
-              <ion-select-option *ngFor="let p of profesionales" [value]="p.nombre_profesional ">{{p.nom}}</ion-select-option>
+              <ion-select-option *ngFor="let p of profesionales"
+                [value]="p.nombre_profesional ">{{p.nom}}</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item>
@@ -150,24 +156,74 @@
   </ion-modal>
 
   <!-- Modal de historial clínica -->
-<ion-modal [isOpen]="historialModalOpen" (didDismiss)="didDismissHistModal()">
-  <ng-template>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Historial de {{pacienteSeleccionado}}</ion-title>
-        <ion-buttons slot="end">
-          <ion-button color="white" (click)="closeHistorialModal()">Cerrar</ion-button>
-        </ion-buttons>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content>
-      <ion-datetime presentation="date">
-        <ion-label>{{ fechaSeleccionada | date: 'dd/MM/yyyy' }}</ion-label>
-        <ion-input [(ngModel)]="fechaSeleccionada" [ngClass]="{ 'highlighted-date': fechaSeleccionada === citaSeleccionada.fecha }"></ion-input>
-      </ion-datetime>
-    </ion-content>
-  </ng-template>
-</ion-modal>
+  <ion-modal [isOpen]="historialModalOpen" (didDismiss)="didDismissHistModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Historial de {{pacienteSeleccionado}}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="closeHistorialModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-datetime presentation="date">
+          <ion-label>{{ fechaSeleccionada | date: 'dd/MM/yyyy' }}</ion-label>
+          <ion-input [(ngModel)]="fechaSeleccionada"
+            [ngClass]="{ 'highlighted-date': fechaSeleccionada === citaSeleccionada.fecha }"></ion-input>
+        </ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+  <!-- Modal de ver cita -->
+  <ion-modal [isOpen]="verCitaModalOpen" (didDismiss)="didDismissVerCitaModal()">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Cita de {{ citaSeleccionada.nom_paciente }}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button color="white" (click)="closeVerCitaModal()">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <table class="content-table">
+          <thead>
+            <tr>
+              <th>Nombre del Paciente</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ citaSeleccionada.nom_paciente }}</td>
+              <td>{{ citaSeleccionada.fecha }}</td>
+              <td>{{ citaSeleccionada.hora }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        
+        <table class="content-table"> 
+          <thead>
+            <tr>
+              <th>Especialista</th>
+              <th>Institución</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{citaSeleccionada.nom_profesional}}</td>
+              <td>{{citaSeleccionada.nom_clinica}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
 
 
 </ion-content>

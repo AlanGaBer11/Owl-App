@@ -40,9 +40,9 @@ const getOnePaciente = async (pacienteId) => {
 };
 
 // POST
-const createNewPaciente = async (registro_online, id_usuario, nombre_cliente, ap_pa, ap_ma, fecha_nacimiento, genero, estado_civil, contacto, antecedentes_medicos, medicamentos_actuales) => {
+const createNewPaciente = async (registro_online, nombre_cliente, ap_pa, ap_ma, fecha_nacimiento, genero, estado_civil, contacto, antecedentes_medicos, medicamentos_actuales) => {
     return new Promise(function (resolve, reject) {
-        const sql = "INSERT INTO owldb.paciente (registro_online, id_usuario, nombre_cliente, ap_pa, ap_ma, fecha_nacimiento, genero, estado_civil, contacto, antecedentes_medicos, medicamentos_actuales) VALUES ('" + registro_online + "','" + id_usuario + "','" + nombre_cliente + "','" + ap_pa + "','" + ap_ma + "','" + fecha_nacimiento + "','" + genero + "','" + estado_civil + "','" + contacto + "','" + antecedentes_medicos + "','" + medicamentos_actuales + "')";
+        const sql = "INSERT INTO owldb.paciente (registro_online, nombre_cliente, ap_pa, ap_ma, fecha_nacimiento, genero, estado_civil, contacto, antecedentes_medicos, medicamentos_actuales) VALUES ('" + registro_online + "','" + nombre_cliente + "','" + ap_pa + "','" + ap_ma + "','" + fecha_nacimiento + "','" + genero + "','" + estado_civil + "','" + contacto + "','" + antecedentes_medicos + "','" + medicamentos_actuales + "')";
         connection.query(sql, (error, results) => {
             if (error) {
                 return reject(error);
@@ -53,9 +53,9 @@ const createNewPaciente = async (registro_online, id_usuario, nombre_cliente, ap
 };
 
 // PATCH
-const updateOnePaciente = async (registro_online, id_usuario, nombre_cliente, ap_pa, ap_ma, fecha_nacimiento, genero, estado_civil, contacto, antecedentes_medicos, medicamentos_actuales, pacienteId) => {
+const updateOnePaciente = async (registro_online, nombre_cliente, ap_pa, ap_ma, fecha_nacimiento, genero, estado_civil, contacto, antecedentes_medicos, medicamentos_actuales, pacienteId) => {
     return new Promise(function (resolve, reject) {
-        const sql = "UPDATE owldb.paciente SET registro_online = '" + registro_online + "', id_usuario = '" + id_usuario + "', nombre_cliente = '" + nombre_cliente + "', ap_pa = '" + ap_pa + "', ap_ma = '" + ap_ma + "', fecha_nacimiento = '" + fecha_nacimiento + "', genero = '" + genero + "', estado_civil = '" + estado_civil + "', contacto = '" + contacto + "', antecedentes_medicos = '" + antecedentes_medicos + "', medicamentos_actuales = '" + medicamentos_actuales + "' WHERE id_paciente = '" + pacienteId + "'";
+        const sql = "UPDATE owldb.paciente SET registro_online = '" + registro_online + "', nombre_cliente = '" + nombre_cliente + "', ap_pa = '" + ap_pa + "', ap_ma = '" + ap_ma + "', fecha_nacimiento = '" + fecha_nacimiento + "', genero = '" + genero + "', estado_civil = '" + estado_civil + "', contacto = '" + contacto + "', antecedentes_medicos = '" + antecedentes_medicos + "', medicamentos_actuales = '" + medicamentos_actuales + "' WHERE id_paciente = '" + pacienteId + "'";
         connection.query(sql, (error, results) => {
             if (error) {
                 return reject(error);

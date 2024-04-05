@@ -37,9 +37,9 @@ const getOneCita = async(citaId) => {
     });
 };
 
-const createNewCita = async(descripcion, fecha, hora, id_usuario, nom_paciente, nom_profesional, nom_clinica) => {
+const createNewCita = async(descripcion, fecha, hora, nom_paciente, nom_profesional, nom_clinica) => {
     return new Promise (function (resolve, reject) {
-        const sql ="INSERT INTO owldb.citas (descripcion, fecha, hora, id_usuario, nom_paciente, nom_profesional, nom_clinica) VALUES ('"+descripcion+"','"+fecha+"','"+hora+"','"+id_usuario+"','"+nom_paciente+"','"+nom_profesional+"','"+nom_clinica+"') ";
+        const sql ="INSERT INTO owldb.citas (descripcion, fecha, hora, nom_paciente, nom_profesional, nom_clinica) VALUES ('"+descripcion+"','"+fecha+"','"+hora+"','"+nom_paciente+"','"+nom_profesional+"','"+nom_clinica+"') ";
         connection.query(sql, (error, results) => {
             if (error){
                 return reject (error);
@@ -49,9 +49,9 @@ const createNewCita = async(descripcion, fecha, hora, id_usuario, nom_paciente, 
     });
 };
 
-const updateOneCita = async(descripcion, fecha, hora, id_usuario, nom_paciente, nom_profesional, nom_clinica, citaId) => {
+const updateOneCita = async(descripcion, fecha, hora, nom_paciente, nom_profesional, nom_clinica, citaId) => {
     return new Promise(function (resolve, reject){
-        const sql ="UPDATE owldb.citas SET descripcion='"+descripcion+"', fecha='"+fecha+"', hora='"+hora+"', id_usuario='"+id_usuario+"', nom_paciente='"+nom_paciente+"', nom_profesional='"+nom_profesional+"', nom_clinica='"+nom_clinica+"' WHERE id_cita = '"+citaId+"' ";
+        const sql ="UPDATE owldb.citas SET descripcion='"+descripcion+"', fecha='"+fecha+"', hora='"+hora+"', nom_paciente='"+nom_paciente+"', nom_profesional='"+nom_profesional+"', nom_clinica='"+nom_clinica+"' WHERE id_cita = '"+citaId+"' ";
         connection.query(sql, (error, results) => {
             if (error){
                 return reject (error);

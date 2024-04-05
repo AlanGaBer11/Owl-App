@@ -11,12 +11,12 @@ const getOnePaciente = async(req, res) => {
 };
 
 const createNewPaciente = async(req, res) => {
-    const pacientes = await pacienteProceso.createNewPaciente(req.body.registro_online, req.body.id_usuario, req.body.nombre_cliente, req.body.ap_pa,req.body.ap_ma,req.body.fecha_nacimiento, req.body.genero, req.body.estado_civil, req.body.contacto, req.body.antecedentes_medicos, req.body.medicamentos_actuales);
+    const pacientes = await pacienteProceso.createNewPaciente(req.body.registro_online, req.body.nombre_cliente, req.body.ap_pa,req.body.ap_ma,req.body.fecha_nacimiento, req.body.genero, req.body.estado_civil, req.body.contacto, req.body.antecedentes_medicos, req.body.medicamentos_actuales);
     res.send(pacientes);
 };
 
 const updateOnePaciente = async(req, res) => {
-    const pacientes = await pacienteProceso.updateOnePaciente(req.body.registro_online, req.body.id_usuario, req.body.nombre_cliente, req.body.ap_pa,req.body.ap_ma,req.body.fecha_nacimiento, req.body.genero, req.body.estado_civil, req.body.contacto, req.body.antecedentes_medicos, req.body.medicamentos_actuales, req.params.pacienteId);
+    const pacientes = await pacienteProceso.updateOnePaciente(req.body.registro_online, req.body.nombre_cliente, req.body.ap_pa,req.body.ap_ma,req.body.fecha_nacimiento, req.body.genero, req.body.estado_civil, req.body.contacto, req.body.antecedentes_medicos, req.body.medicamentos_actuales, req.params.pacienteId);
     res.send(pacientes);
 };
 
