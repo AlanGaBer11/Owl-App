@@ -51,6 +51,15 @@
               mayúscula, un número y un signo especial</p>
           </ion-text>
         </ion-item>
+        <ion-item>
+          <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+          <ion-label position="floating">Confirmar Contraseña</ion-label>
+          <ion-input type="password" formControlName="confirmPassw" placeholder="Confirmar Contraseña"></ion-input>
+          <ion-text color="danger" *ngIf="formularioSingup.controls['confirmPassw'].invalid && (formularioSingup.controls['confirmPassw'].dirty || formularioSingup.controls['confirmPassw'].touched)">
+            <p *ngIf="formularioSingup.controls['confirmPassw'].hasError('required')">Confirmar Contraseña es requerida</p>
+            <p *ngIf="formularioSingup.controls['confirmPassw'].hasError('confirmPassword')">Las contraseñas no coinciden</p>
+          </ion-text>
+        </ion-item>
       </div>
       <ion-button type="submit" [disabled]="formularioSingup.invalid" expand="block">Guardar</ion-button>
     </form>

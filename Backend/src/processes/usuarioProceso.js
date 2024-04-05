@@ -30,6 +30,11 @@ const loginProcess = async(correo, passw) =>{
     return usuarios; 
 }; 
 
+const getOneEmail = async(correo) =>{
+    const usuarios = await usuarioService.getOneEmail(correo); 
+    return usuarios; 
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
@@ -37,4 +42,5 @@ module.exports = {
     updateOneUsuario,
     deleteOneUsuario,
     loginProcess,
+    getOneEmail, 
 };

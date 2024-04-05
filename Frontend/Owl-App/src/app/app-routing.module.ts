@@ -71,7 +71,11 @@ const routes: Routes = [
   {
     path: 'card-art',
     loadChildren: () => import('./pages/articulos/card-art/card-art.module').then( m => m.CardArtPageModule)
+  },  {
+    path: 'forgot-pass',
+    loadChildren: () => import('./pages/basic/forgot-pass/forgot-pass.module').then( m => m.ForgotPassPageModule)
   },
+
 
 ];
 

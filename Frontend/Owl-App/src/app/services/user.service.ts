@@ -6,9 +6,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class UserService {
   private userDataSubject = new BehaviorSubject<any>(null); 
+  private userSesionSubject = new BehaviorSubject<any>(null); 
   userData$ = this.userDataSubject.asObservable(); 
+  userSesion$ = this.userSesionSubject.asObservable(); 
 
   constructor() { }
+
+  setCurrentSesion(userSesion: any){
+    this.userSesionSubject.next(userSesion); 
+  }
 
   setUserData(userData: any){
     this.userDataSubject.next(userData); 
@@ -16,5 +22,9 @@ export class UserService {
 
   getUserData(){
     return this.userDataSubject.value; 
+  }
+
+  getCurrentSesion(){
+    return this.userSesionSubject.value; 
   }
 }

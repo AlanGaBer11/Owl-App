@@ -92,6 +92,19 @@ const deleteOneUsuario = async(usuarioId) => {
     }); 
 };
 
+const getOneEmail = async(correo) => {
+    return new Promise(function(resolve, reject){
+        const sql = "SELECT * FROM usuarios WHERE correo =? ;"; 
+        connection.query(sql, [correo], (error, results)=>{
+            if(error){
+                console.error('Error al obtener email: ', error); 
+                return reject(error); 
+            }
+            resolve(results); 
+        });
+    }); 
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
@@ -99,4 +112,5 @@ module.exports = {
     updateOneUsuario,
     deleteOneUsuario,
     loginProcess,
+    getOneEmail,
 }

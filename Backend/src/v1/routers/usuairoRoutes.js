@@ -9,5 +9,6 @@ router
     .patch("/:usuarioId", usuarioController.updateOneUsuario)
     .delete("/:usuarioId", usuarioController.deleteOneUsuario)
     .post("/login", usuarioController.loginProcess)    
+    .post("/get-email", usuarioController.getOneEmail)
     
 module.exports = router;

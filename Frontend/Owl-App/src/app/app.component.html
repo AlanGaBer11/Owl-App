@@ -70,22 +70,21 @@
           <ion-title style="text-align: center;" routerLink="/home">
             <ion-icon name="home" routerLink="/home"></ion-icon> Home | Owl</ion-title>
           <!-- Prueba para uso de variables de sesion -->
-          <div *ngIf="userData">
-            <div class="imagen-nombre-container">
-              <div class="nombre-usuario" style="color: #fff">{{ userData.displayName }}</div>
-              <div *ngIf="userData.photoURL">
-                <div class="imagen-container">
-                  <img [src]="userData.photoURL" id="popover-button" alt="/src/assets/img/ppPlaceholder.png"
-                    style="border-radius: 50%; border: 2px solid #000;">
-                </div>              
-              </div>
-              <div *ngIf="!userData.photoURL">
-                <div class="imagen-container">
-                  <img src="/Frontend/Owl-App/src/assets/img/ppPlaceholder.png" id="popover-button" alt="alt"
-                    style="border-radius: 50%; border: 2px solid #000;">
-                </div>              
-              </div>
+          <div *ngIf="userSesion || userData">
+            <div class="imagen-nombre-container">              
 
+              <div *ngIf="userData && !userSesion" >
+                <div class="nombre-usuario" style="color: #fff">{{ userData.displayName }}</div> 
+              </div>
+              <div *ngIf="!userData && userSesion">
+                <div class="nombre-usuario" style="color: #fff">{{ userSesion.nom_usuario }}</div> 
+              </div>
+              
+              <div class="imagen-container">
+                <img [src]="userData.photoURL" id="popover-button" alt="/src/assets/img/ppPlaceholder.png"
+                  style="border-radius: 50%; border: 2px solid #000;">
+              </div>              
+              
               <ion-popover trigger="popover-button" [dismissOnSelect]="true">
                 <ng-template>
                   <ion-content>

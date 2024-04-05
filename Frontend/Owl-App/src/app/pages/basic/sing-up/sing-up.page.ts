@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -38,6 +38,7 @@ export class SingUpPage implements OnInit {
           ),
         ],
       ],
+      confirmPassw: ['', [Validators.required, this.confirmPasswordValidator.bind(this)]],
     });
   }
 
@@ -165,5 +166,15 @@ export class SingUpPage implements OnInit {
           console.error('Error al eliminar el usuario', error);
         }
       );
+  }
+  // Método para validar la confirmación de contraseña
+  confirmPasswordValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    if (!this.formularioSingup || !this.formularioSingup.get('passw')) {
+      return null; // Salir si el formulario o el control de contraseña no están disponibles
+    }
+  
+    const password = this.formularioSingup.get('passw')?.value;
+    const confirmPassword = control.value;
+    return password === confirmPassword ? null : { confirmPassword: true };
   }
 }

@@ -15,6 +15,7 @@ import { AuthService } from './services/auth.service';
 })
 
 export class AppComponent implements OnInit {
+  userSesion: any; 
   userData: any; 
   darkMode: boolean = false;
   constructor(private userService: UserService, private authService: AuthService) {}
@@ -23,6 +24,10 @@ export class AppComponent implements OnInit {
       this.userService.userData$.subscribe(userData => {
         this.userData = userData; 
       }); 
+
+      this.userService.userSesion$.subscribe(userSesion =>{
+        this.userSesion = userSesion; 
+      })
     }
 
   chekModeApp(){
